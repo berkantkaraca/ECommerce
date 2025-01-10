@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!Doctype html>
+<html class="modern fixed has-top-menu has-left-sidebar-half" lang="tr">
+
+@await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
+
+<body>
+	<section class="body">
+
+		@await Component.InvokeAsync("_AdminLayoutHeaderComponentPartial")
+
+		<div class="inner-wrapper">
+
+			@await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
+
+			<section role="main" class="content-body content-body-modern mt-0">
+
+				@RenderBody()
+
+			</section>
+		</div>
+
+	</section>
+
+	@await Component.InvokeAsync("_AdminLayoutScriptComponentPartial")
+</body>
+</html>
