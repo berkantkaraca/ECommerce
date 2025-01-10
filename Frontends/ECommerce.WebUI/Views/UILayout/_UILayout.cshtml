@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+@await Component.InvokeAsync("_UILayoutHeadComponentPartial")
+
+<body data-plugin-page-transition>
+    <div class="body">
+
+        @await Component.InvokeAsync("_UILayoutHeaderComponentPartial")
+
+        <div role="main" class="main">
+
+            @RenderBody()
+
+            @await Component.InvokeAsync("_UILayoutFooterComponentPartial")
+
+        </div>
+
+        @await Component.InvokeAsync("_UILayoutScriptComponentPartial")
+
+    </div>
+</body>
+
+</html>
