@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{D6337DB4-67FD-461A-9B16-96A3AEBED755}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C5BD7A06-F48B-4F66-A480-AF4821EEECD2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.WebUI", "Frontends\ECommerce.WebUI\ECommerce.WebUI.csproj", "{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{E1E030B2-DDAD-4967-A456-FF14A941A643}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Catalog", "Services\Catalog\ECommerce.Catalog\ECommerce.Catalog.csproj", "{3B62DCD1-3040-4DB1-B188-A8E1A5A09F31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,11 +23,17 @@ Global
 		{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B62DCD1-3040-4DB1-B188-A8E1A5A09F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B62DCD1-3040-4DB1-B188-A8E1A5A09F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B62DCD1-3040-4DB1-B188-A8E1A5A09F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B62DCD1-3040-4DB1-B188-A8E1A5A09F31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693} = {D6337DB4-67FD-461A-9B16-96A3AEBED755}
+		{E1E030B2-DDAD-4967-A456-FF14A941A643} = {C5BD7A06-F48B-4F66-A480-AF4821EEECD2}
+		{3B62DCD1-3040-4DB1-B188-A8E1A5A09F31} = {E1E030B2-DDAD-4967-A456-FF14A941A643}
 	EndGlobalSection
 EndGlobal
