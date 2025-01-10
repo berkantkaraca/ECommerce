@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+
+@await Component.InvokeAsync("_DefaultBannerComponentPartial")
+
+@await Component.InvokeAsync("_DefaultIntroComponentPartial")
+
+<div role="main" class="main shop pt-4">
+    <div class="container">
+        <div class="row">
+
+            @await Component.InvokeAsync("_DefaultSidebarComponentPartial")
+
+            <div class="col-lg-9 order-1 order-lg-2">
+                <div class="masonry-loader masonry-loader-showing">
+
+                    @await Component.InvokeAsync("_DefaultProductListComponentPartial")
+
+                    @await Component.InvokeAsync("_DefaultPaginationComponentPartial")
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
