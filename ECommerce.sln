@@ -7,8 +7,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C5BD7A06-F48B-4F66-A480-AF4821EEECD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.WebUI", "Frontends\ECommerce.WebUI\ECommerce.WebUI.csproj", "{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE3E41D9-DA5B-454F-A5D2-7C6E8B716693} = {D6337DB4-67FD-461A-9B16-96A3AEBED755}
 	EndGlobalSection
 EndGlobal
