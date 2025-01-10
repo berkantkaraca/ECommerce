@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "ProductDetail";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+
+<div role="main" class="main shop pt-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 mb-5 mb-md-0">
+
+				@await Component.InvokeAsync("_ProductDetailImagesComponentPartial")
+
+			</div>
+
+			<div class="col-md-7">
+
+				@await Component.InvokeAsync("_ProductDetailFeatureComponentPartial")
+
+			</div>
+		</div>
+
+		<div class="row mb-4">
+			<div class="col">
+				<div id="description" class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
+					<ul class="nav nav-tabs justify-content-start">
+						<li class="nav-item"><a class="nav-link active font-weight-bold text-3 text-uppercase py-2 px-3" href="#productDescription" data-bs-toggle="tab">Description</a></li>
+						<li class="nav-item"><a class="nav-link font-weight-bold text-3 text-uppercase py-2 px-3" href="#productInfo" data-bs-toggle="tab">Additional Information</a></li>
+						<li class="nav-item"><a class="nav-link nav-link-reviews font-weight-bold text-3 text-uppercase py-2 px-3" href="#productReviews" data-bs-toggle="tab">Reviews (2)</a></li>
+					</ul>
+					<div class="tab-content p-0">
+
+						@await Component.InvokeAsync("_ProductDetailDescriptionComponentPartial")
+
+						@await Component.InvokeAsync("_ProductDetailInfoComponentPartial")
+
+						@await Component.InvokeAsync("_ProductDetailReviewComponentPartial")
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
