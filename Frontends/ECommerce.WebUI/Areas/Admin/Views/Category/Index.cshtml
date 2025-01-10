@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Admin/_AdminLayout.cshtml";
+}
+
+<header class="page-header page-header-left-inline-breadcrumb">
+	<h2 class="font-weight-bold text-6">Kategoriler</h2>
+	@* <div class="right-wrapper">
+		<ol class="breadcrumbs">
+
+			<li><span>Home</span></li>
+			<li><span>eCommerce</span></li>
+			<li><span>Coupons</span></li>
+
+		</ol>
+	</div> *@
+</header>
+
+<div class="card-body">
+	<table class="table table-bordered table-striped mb-0" id="datatable-editable">
+		<thead>
+			<tr>
+				<th>Rendering engine</th>
+				<th>Browser</th>
+				<th>Platform(s)</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-item-id="1">
+				<td>Trident</td>
+				<td>
+					Internet
+					Explorer 4.0
+				</td>
+				<td>Win 95+</td>
+				<td class="actions">
+					<a href="#" class="hidden on-editing save-row"><i class="fas fa-save"></i></a>
+					<a href="#" class="hidden on-editing cancel-row"><i class="fas fa-times"></i></a>
+					<a href="#" class="on-default edit-row"><i class="fas fa-pencil-alt"></i></a>
+					<a href="#" class="on-default remove-row"><i class="far fa-trash-alt"></i></a>
+				</td>
+			</tr>
+			<tr data-item-id="2">
+				<td>Trident</td>
+				<td>
+					Internet
+					Explorer 5.0
+				</td>
+				<td>Win 95+</td>
+				<td class="actions">
+					<a href="#" class="hidden on-editing save-row"><i class="fas fa-save"></i></a>
+					<a href="#" class="hidden on-editing cancel-row"><i class="fas fa-times"></i></a>
+					<a href="#" class="on-default edit-row"><i class="fas fa-pencil-alt"></i></a>
+					<a href="#" class="on-default remove-row"><i class="far fa-trash-alt"></i></a>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+	<div class="row mt-3">
+		<div class="col-sm-6">
+			<div class="mb-3">
+				<button id="addToTable" class="btn btn-primary">Add <i class="fas fa-plus"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
