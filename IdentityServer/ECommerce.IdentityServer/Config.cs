@@ -66,8 +66,8 @@ namespace ECommerce.IdentityServer
             {
                 ClientId = "ECommerceAdminId",
                 ClientName = "ECommerce Admin User",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
-                //AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                //AllowedGrantTypes = GrantTypes.ClientCredentials, //kullanıcı bilgisi olmadan erişim
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, //kullanıcı bilgisi ile erişim
                 ClientSecrets = { new Secret("ecommercesecret".Sha256()) },
                 AllowedScopes = {
                     "CatalogReadPermission",
