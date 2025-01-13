@@ -19,6 +19,8 @@
 
 			<section role="main" class="content-body content-body-modern mt-0">
 
+				@await Component.InvokeAsync("_AdminLayoutRenderBodyHeaderComponentPartial")
+
 				@RenderBody()
 
 			</section>
