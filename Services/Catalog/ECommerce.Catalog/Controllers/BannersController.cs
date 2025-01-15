@@ -27,7 +27,7 @@ namespace ECommerce.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBannerById(string id)
         {
-            var values = await _bannerService.GetBannerByIdAsync(id);
+            var values = await _bannerService.GetByIdBannerAsync(id);
             return Ok(values);
         }
 

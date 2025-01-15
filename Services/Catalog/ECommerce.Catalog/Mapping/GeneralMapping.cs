@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ECommerce.Catalog.Dtos.BannerDtos;
+using ECommerce.Catalog.Dtos.CampaignDtos;
 using ECommerce.Catalog.Dtos.CategoryDtos;
 using ECommerce.Catalog.Dtos.ProductDetailDtos;
 using ECommerce.Catalog.Dtos.ProductDtos;
@@ -37,6 +38,11 @@ namespace ECommerce.Catalog.Mapping
             CreateMap<Banner, GetByIdBannerDto>().ReverseMap();
             CreateMap<Banner, ResultBannerDto>().ReverseMap();
             CreateMap<Banner, UpdateBannerDto>().ReverseMap();
+
+            CreateMap<Campaign, CreateCampaignDto>().ReverseMap();
+            CreateMap<Campaign, GetByIdCampaignDto>().ReverseMap();
+            CreateMap<Campaign, ResultCampaignDto>().ReverseMap();
+            CreateMap<Campaign, UpdateCampaignDto>().ReverseMap();
         }
     }
 }

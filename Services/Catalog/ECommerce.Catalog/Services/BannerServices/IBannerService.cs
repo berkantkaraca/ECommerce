@@ -6,7 +6,7 @@ namespace ECommerce.Catalog.Services.BannerServices
     {
         Task CreateBannerAsync(CreateBannerDto createBannerDto);
         Task<List<ResultBannerDto>> GetAllBannerAsync();
-        Task<GetByIdBannerDto> GetBannerByIdAsync(string id);
+        Task<GetByIdBannerDto> GetByIdBannerAsync(string id);
         Task UpdateBannerAsync(UpdateBannerDto updateBannerDto);
         Task DeleteBannerAsync(string id);
         Task BannerChangeStatusToTrue(string id);

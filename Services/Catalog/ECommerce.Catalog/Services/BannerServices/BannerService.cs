@@ -44,7 +44,7 @@ namespace ECommerce.Catalog.Services.BannerServices
             return _mapper.Map<List<ResultBannerDto>>(values);
         }
 
-        public async Task<GetByIdBannerDto> GetBannerByIdAsync(string id)
+        public async Task<GetByIdBannerDto> GetByIdBannerAsync(string id)
         {
             var values = await _BannerCollection.Find<Banner>(x => x.BannerId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdBannerDto>(values);

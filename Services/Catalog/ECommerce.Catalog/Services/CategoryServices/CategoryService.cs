@@ -25,18 +25,13 @@ namespace ECommerce.Catalog.Services.CategoryServices
             await _categoryCollection.InsertOneAsync(value);
         }
 
-        public async Task DeleteCategoryAsync(string id)
-        {
-            await _categoryCollection.DeleteOneAsync(x => x.CategoryId == id);
-        }
-
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
         {
             var values = await _categoryCollection.Find(x => true).ToListAsync();
             return _mapper.Map<List<ResultCategoryDto>>(values);
         }
 
-        public async Task<GetByIdCategoryDto> GetCategoryByIdAsync(string id)
+        public async Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id)
         {
             var values = await _categoryCollection.Find<Category>(x => x.CategoryId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdCategoryDto>(values);
@@ -47,6 +42,11 @@ namespace ECommerce.Catalog.Services.CategoryServices
         {
             var values = _mapper.Map<Category>(updateCategoryDto);
             await _categoryCollection.FindOneAndReplaceAsync(x => x.CategoryId == updateCategoryDto.CategoryId, values);
+        }
+
+        public async Task DeleteCategoryAsync(string id)
+        {
+            await _categoryCollection.DeleteOneAsync(x => x.CategoryId == id);
         }
     }
 }

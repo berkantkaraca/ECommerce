@@ -1,0 +1,35 @@
+﻿@model UpdateCampaignDto
+@{
+    ViewData["Title"] = "UpdateCampaign";
+    Layout = "~/Areas/Admin/Views/Admin/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <section class="card">
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" asp-for="CampaignId" class="form-control" />
+
+                    <label>Kampanya Başlığı</label>
+                    <input type="text" asp-for="Title" class="form-control" />
+                    <br />
+
+                    <label>Renkli Yazı</label>
+                    <input type="text" asp-for="ColorfulText" class="form-control" />
+                    <br />
+
+                    <label>Açıklama</label>
+                    <input type="text" asp-for="Description" class="form-control" />
+                    <br />
+
+                    <label>Resim URL</label>
+                    <input type="text" asp-for="ImageUrl" class="form-control" />
+                    <br />
+
+                    <button type="submit" class="btn btn-primary">Ekle</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

@@ -29,7 +29,7 @@ namespace ECommerce.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategoryById(string id)
         {
-            var values = await _categoryService.GetCategoryByIdAsync(id);
+            var values = await _categoryService.GetByIdCategoryAsync(id);
             return Ok(values);
         }
 
