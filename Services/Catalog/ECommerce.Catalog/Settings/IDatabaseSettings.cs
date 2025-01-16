@@ -9,6 +9,7 @@
         public string ProductImagesCollectionName { get; set; }
         public string BannerCollectionName { get; set; }
         public string CampaignCollectionName { get; set; }
+        public string FeatureCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }

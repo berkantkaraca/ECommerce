@@ -1,6 +1,7 @@
 using ECommerce.Catalog.Services.BannerServices;
 using ECommerce.Catalog.Services.CampaignServices;
 using ECommerce.Catalog.Services.CategoryServices;
+using ECommerce.Catalog.Services.FeatureServices;
 using ECommerce.Catalog.Services.ProductDetailServices;
 using ECommerce.Catalog.Services.ProductImageServices;
 using ECommerce.Catalog.Services.ProductServices;
@@ -25,6 +26,7 @@ builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IBannerService, BannerService>();
 builder.Services.AddScoped<ICampaignService, CampaignService>();
+builder.Services.AddScoped<IFeatureService, FeatureService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
