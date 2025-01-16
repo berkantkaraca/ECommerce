@@ -1,0 +1,30 @@
+﻿@model List<ResultCategoryDto>
+
+<section id="elements" class="section section-height-2 border-0 mt-5 mb-0 pt-5">
+	<div class="container py-2">
+		<div class="row mt-3 pb-4">
+			<div class="col text-center">
+				<h2 class="font-weight-bold mb-0">Kategoriler</h2>
+				<!-- <p class="lead text-4 pt-2 font-weight-normal">Porto comes with several elements options, it's easy to customize<br> and create the content of your website's pages.</p> -->
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			@foreach (var item in Model)
+			{
+				<div class="col-6 col-sm-4 col-lg-2">
+					<div class="featured-boxes featured-boxes-modern-style-2 featured-boxes-modern-style-2-hover-only featured-boxes-modern-style-primary m-0 mb-4 pb-3">
+						<div class="featured-box featured-box-no-borders featured-box-box-shadow">
+							<a href="elements-accordions.html" class="text-decoration-none">
+								<span class="box-content px-1 py-4 text-center d-block">
+									<img src="@item.ImageUrl" alt="Category Image" class="img-fluid">
+									<span class="font-weight-bold text-uppercase text-1 negative-ls-1 d-block text-dark pt-2">@item.CategoryName</span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>

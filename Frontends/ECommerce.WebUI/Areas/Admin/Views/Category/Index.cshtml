@@ -13,6 +13,7 @@
 				<th>#</th>
 				<th>Kategori Adı</th>
 				<th>Kategoriye Ait Ürünler</th>
+				<th>Resim Url</th>
 				<th>Sil</th>
 				<th>Güncelle</th>
 			</tr>
@@ -24,17 +25,10 @@
 				<tr data-item-id="@count">
 					<th>@count</th>
 					<td>@item.CategoryName</td>
-					<td>
-						<a href="#" class="on-default edit-row"><i class="fas fa-pencil-alt"></i> Kategoriye Ait Ürünler</a>
-					</td>
-
-					<td class="actions">
-						<a href="DeleteCategory/@item.CategoryId" class="on-default remove-row"><i class="far fa-trash-alt"></i></a>
-					</td>
-					<td class="actions">
-
-						<a href="UpdateCategory/@item.CategoryId" class="on-default edit-row"><i class="fas fa-pencil-alt"></i></a>
-					</td>
+					<td><a href="#" class="on-default edit-row"><i class="fas fa-pencil-alt"></i> Kategoriye Ait Ürünler</a></td>
+					<td>@item.ImageUrl</td>
+					<td class="actions"><a href="DeleteCategory/@item.CategoryId" class="on-default remove-row"><i class="far fa-trash-alt"></i></a></td>
+					<td class="actions"><a href="UpdateCategory/@item.CategoryId" class="on-default edit-row"><i class="fas fa-pencil-alt"></i></a></td>
 				</tr>
 			}
 		</tbody>
