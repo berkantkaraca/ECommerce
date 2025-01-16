@@ -1,4 +1,5 @@
-﻿@model List<ResultProductDto>
+﻿@model List<ResultBrandDto>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Admin/_AdminLayout.cshtml";
@@ -10,8 +11,8 @@
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Ürün Adı</th>
-				<th>Ürün Fiyatı</th>
+				<th>Marka Adı</th>
+				<th>Resim Url</th>
 				<th>Sil</th>
 				<th>Güncelle</th>
 			</tr>
@@ -22,14 +23,10 @@
 				count++;
 				<tr data-item-id="@count">
 					<th>@count</th>
-					<td>@item.ProductName</td>
-					<td>@item.ProductPrice</td>
-					<td class="actions">
-						<a href="DeleteProduct/@item.ProductId" class="on-default remove-row"><i class="far fa-trash-alt"></i></a>
-					</td>
-					<td class="actions">
-						<a href="UpdateProduct/@item.ProductId" class="on-default edit-row"><i class="fas fa-pencil-alt"></i></a>
-					</td>
+					<td>@item.BrandName</td>
+					<td>@item.ImageUrl</td>
+					<td class="actions"><a href="DeleteBrand/@item.BrandId" class="on-default remove-row"><i class="far fa-trash-alt"></i></a></td>
+					<td class="actions"><a href="UpdateBrand/@item.BrandId" class="on-default edit-row"><i class="fas fa-pencil-alt"></i></a></td>
 				</tr>
 			}
 		</tbody>
@@ -38,7 +35,7 @@
 	<div class="row mt-3">
 		<div class="col-sm-6">
 			<div class="mb-3">
-				<a href="CreateProduct" id="addToTable" class="btn btn-primary">Yeni Ürün Ekle <i class="fas fa-plus"></i></a>
+				<a href="CreateBrand" id="addToTable" class="btn btn-primary">Yeni Marka Ekle <i class="fas fa-plus"></i></a>
 			</div>
 		</div>
 	</div>
