@@ -1,3 +1,4 @@
+using ECommerce.Catalog.Services.AboutServices;
 using ECommerce.Catalog.Services.BannerServices;
 using ECommerce.Catalog.Services.BrandServices;
 using ECommerce.Catalog.Services.CampaignServices;
@@ -6,6 +7,7 @@ using ECommerce.Catalog.Services.FeatureServices;
 using ECommerce.Catalog.Services.ProductDetailServices;
 using ECommerce.Catalog.Services.ProductImageServices;
 using ECommerce.Catalog.Services.ProductServices;
+using ECommerce.Catalog.Services.SocialMediaServices;
 using ECommerce.Catalog.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -29,6 +31,8 @@ builder.Services.AddScoped<IBannerService, BannerService>();
 builder.Services.AddScoped<ICampaignService, CampaignService>();
 builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<ISocialMediaService, SocialMediaService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

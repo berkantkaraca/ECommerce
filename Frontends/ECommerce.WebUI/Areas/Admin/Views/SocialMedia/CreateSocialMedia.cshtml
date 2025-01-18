@@ -1,0 +1,29 @@
+﻿@model CreateSocialMediaDto
+@{
+    ViewData["Title"] = "CreateSocialMedia";
+    Layout = "~/Areas/Admin/Views/Admin/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <section class="card">
+            <div class="card-body">
+                <form method="post">
+                    <label>Ad</label>
+                    <input type="text" asp-for="SocialMediaName" class="form-control" />
+                    <br />
+
+                    <label>Link</label>
+                    <input type="text" asp-for="SocialMediaLink" class="form-control" />
+                    <br />
+
+                    <label>İkon</label>
+                    <input type="text" asp-for="SocialMediaIcon" class="form-control" />
+                    <br />
+
+                    <button type="submit" class="btn btn-primary">Ekle</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
