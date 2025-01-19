@@ -1,4 +1,6 @@
-﻿<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
+﻿@model List<ResultCategoryDto>
+
+<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
     <div class="header-body header-body-bottom-border border-top-0">
         <div class="header-container container" style="height: 30px;">
             <div class="header-row">
@@ -23,17 +25,15 @@
                                             <i class="icons icon-magnifier text-color-dark text-color-hover-primary"></i>
                                         </a>
                                         <div class="search-form-wrapper input-group">
-                                            <input class="form-control text-1" id="headerSearch" name="q" type="search"
-                                                   value="" placeholder="Search...">
+                                            <input class="form-control text-1" id="headerSearch" name="q" type="search" value="" placeholder="Search...">
                                             <div class="search-form-select-wrapper">
                                                 <div class="custom-select-1">
                                                     <select name="category" class="form-control form-select">
-                                                        <option value="all" selected>All Categories</option>
-                                                        <option value="fashion">Fashion</option>
-                                                        <option value="electronics">Electronics</option>
-                                                        <option value="homegarden">Home & Garden</option>
-                                                        <option value="motors">Motors</option>
-                                                        <option value="features">Features</option>
+                                                        <option value="all" selected>Tüm Kategoriler</option>
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            <option value="@item.CategoryName">@item.CategoryName</option>
+                                                        }
                                                     </select>
                                                 </div>
                                                 <button class="btn" type="submit">
@@ -100,7 +100,7 @@
                                         </li>
                                         <li class="dropdown">
                                             <a class="dropdown-item dropdown-toggle" href="#">
-                                                <i class="icons icon-basket"></i>
+                                                <i class="icons icon-bag"></i>
                                             </a>
                                         </li>
                                     </ul>

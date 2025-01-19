@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ECommerce.WebUI.ViewComponents.DefaultViewComponents
+namespace ECommerce.WebUI.ViewComponents.ProductListViewComponents
 {
-    public class _DefaultSidebarComponentPartial : ViewComponent
+    public class _ProductListColorFilterComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

@@ -35,19 +35,6 @@
 					</td>
 				</tr>
 			}
-
-	@* 		@foreach (var item in Model)
-			{
-				count++;
-				<tr>
-					<th scope="row">@count</th>
-					<td>@item.ProductName</td>
-					<td>@item.ProductPrice</td>
-					<td>@item.Category.CategoryName</td>
-					<td><a href="DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
-					<td><a href="UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
-				</tr>
-			} *@
 		</tbody>
 	</table>
 

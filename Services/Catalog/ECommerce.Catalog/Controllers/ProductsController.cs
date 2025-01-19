@@ -40,6 +40,13 @@ namespace ECommerce.Catalog.Controllers
             return Ok(values);
         }
 
+        [HttpGet("ProductListWithCategoryByCategoryId")]
+        public async Task<IActionResult> ProductListWithCategoryByCategoryId(string CategoryId)
+        {
+            var values = await _productService.GetProductsWithCategoryByCategoryIdAsync(CategoryId);
+            return Ok(values);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {

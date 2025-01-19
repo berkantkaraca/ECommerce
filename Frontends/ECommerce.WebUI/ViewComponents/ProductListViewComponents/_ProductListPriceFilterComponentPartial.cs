@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ECommerce.WebUI.ViewComponents.DefaultViewComponents
+namespace ECommerce.WebUI.ViewComponents.ProductListViewComponents
 {
-    public class _DefaultPaginationComponentPartial : ViewComponent
+    public class _ProductListPriceFilterComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
