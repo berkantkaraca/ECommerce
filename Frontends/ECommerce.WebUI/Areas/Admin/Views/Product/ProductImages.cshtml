@@ -1,0 +1,36 @@
+﻿@model UpdateProductImageDto
+
+@{
+    ViewData["Title"] = "ProductImages";
+    Layout = "~/Areas/Admin/Views/Admin/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <section class="card">
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" asp-for="ProductImageId" class="form-control" />
+                    <input type="hidden" asp-for="ProductId" class="form-control" />
+                    <label>Görsel 1</label>
+                    <input type="text" asp-for="Image1" class="form-control" />
+                    <br />
+
+                    <label>Görsel 2</label>
+                    <input type="text" asp-for="Image2" class="form-control" />
+                    <br />
+
+                    <label>Görsel 3</label>
+                    <input type="text" asp-for="Image3" class="form-control" />
+                    <br />
+
+                    <label>Görsel 4</label>
+                    <input type="text" asp-for="Image4" class="form-control" />
+                    <br />
+
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

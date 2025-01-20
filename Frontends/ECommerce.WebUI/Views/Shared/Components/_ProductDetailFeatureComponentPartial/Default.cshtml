@@ -1,4 +1,6 @@
-﻿<div class="summary entry-summary position-relative">
+﻿@model UpdateProductDto
+
+<div class="summary entry-summary position-relative">
 
 	<div class="position-absolute top-0 right-0">
 		<div class="products-navigation d-flex">
@@ -7,7 +9,7 @@
 		</div>
 	</div>
 
-	<h1 class="mb-0 font-weight-bold text-7">Porto Headphone</h1>
+	<h1 class="mb-0 font-weight-bold text-7">@Model.ProductName</h1>
 
 	<div class="pb-0 clearfix d-flex align-items-center">
 		<div title="Rated 3 out of 5" class="float-start">
@@ -26,11 +28,11 @@
 	</div>
 
 	<p class="price mb-3">
-		<span class="sale text-color-dark">$15,00</span>
+		<span class="sale text-color-dark">@Model.ProductPrice.ToString("C")</span>
 		<span class="amount">$22,00</span>
 	</p>
 
-	<p class="text-3-5 mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus nibh sed elimttis adipiscing. Fusce in hendrerit purus. Lorem ipsum dolor sit amet.</p>
+	<p class="text-3-5 mb-3">@Model.ProductDescription</p>
 
 	<ul class="list list-unstyled text-2">
 		<li class="mb-0">AVAILABILITY: <strong class="text-color-dark">AVAILABLE</strong></li>
@@ -74,7 +76,7 @@
 			<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
 			<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
 		</div>
-		<button type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">Add to cart</button>
+		<button type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">Sepete Ekle</button>
 		<hr>
 	</form>
 

@@ -9,13 +9,13 @@
 		<div class="row">
 			<div class="col-md-5 mb-5 mb-md-0">
 
-				@await Component.InvokeAsync("_ProductDetailImagesComponentPartial")
+				@await Component.InvokeAsync("_ProductDetailImagesComponentPartial", new { id = ViewBag.ProductId })
 
 			</div>
 
 			<div class="col-md-7">
 
-				@await Component.InvokeAsync("_ProductDetailFeatureComponentPartial")
+				@await Component.InvokeAsync("_ProductDetailFeatureComponentPartial", new { id = ViewBag.ProductId })
 
 			</div>
 		</div>

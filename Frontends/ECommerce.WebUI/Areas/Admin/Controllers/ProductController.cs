@@ -1,5 +1,6 @@
 ﻿using ECommerce.DtoLayer.CatalogDtos.CategoryDtos;
 using ECommerce.DtoLayer.CatalogDtos.ProductDtos;
+using ECommerce.DtoLayer.CatalogDtos.ProductImageDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -154,6 +155,42 @@ namespace ECommerce.WebUI.Areas.Admin.Controllers
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Product", new { area = "Admin" });
+            }
+            return View();
+        }
+
+        [HttpGet]
+        [Route("ProductImages/{id}")]
+        public async Task<IActionResult> ProductImages(string id)
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Ürün";
+            ViewBag.v3 = "Ürün Görsel Güncelleme";
+            ViewBag.v4 = "Ürün Görsel Güncelleme";
+
+            var client = _httpClientFactory.CreateClient();
+
+            var response = await client.GetAsync("https://localhost:7070/api/ProductImages/ProductImagesByProductId?id=" + id);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData = await response.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateProductImageDto>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [Route("ProductImages/{id}")]
+        public async Task<IActionResult> ProductImages(UpdateProductImageDto updateProductImageDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateProductImageDto);
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var response = await client.PutAsync("https://localhost:7070/api/ProductImages", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" });
             }
             return View();
         }

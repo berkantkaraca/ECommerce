@@ -1,4 +1,5 @@
-﻿namespace ECommerce.Catalog.Dtos.ProductImageDtos
+﻿namespace ECommerce.DtoLayer.CatalogDtos.ProductImageDtos
+
 {
     public class GetByIdProductImageDto
     {

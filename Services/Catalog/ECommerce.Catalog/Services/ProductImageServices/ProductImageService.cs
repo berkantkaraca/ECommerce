@@ -25,18 +25,13 @@ namespace ECommerce.Catalog.Services.ProductImageServices
             await _productImageCollection.InsertOneAsync(value);
         }
 
-        public async Task DeleteProductImageAsync(string id)
-        {
-            await _productImageCollection.DeleteOneAsync(x => x.ProductImageId == id);
-        }
-
         public async Task<List<ResultProductImageDto>> GetAllProductImageAsync()
         {
             var values = await _productImageCollection.Find(x => true).ToListAsync();
             return _mapper.Map<List<ResultProductImageDto>>(values);
         }
 
-        public async Task<GetByIdProductImageDto> GetProductImageByIdAsync(string id)
+        public async Task<GetByIdProductImageDto> GetByIdProductImageAsync(string id)
         {
             var value = await _productImageCollection.Find<ProductImage>(x => x.ProductImageId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductImageDto>(value);
@@ -46,6 +41,17 @@ namespace ECommerce.Catalog.Services.ProductImageServices
         {
             var value = _mapper.Map<ProductImage>(updateProductImageDto);
             await _productImageCollection.FindOneAndReplaceAsync(x => x.ProductImageId == updateProductImageDto.ProductImageId, value);
+        }
+
+        public async Task DeleteProductImageAsync(string id)
+        {
+            await _productImageCollection.DeleteOneAsync(x => x.ProductImageId == id);
+        }
+
+        public async Task<GetByIdProductImageDto> GetByProductIdProductImageAsync(string id)
+        {
+            var values = await _productImageCollection.Find(x => x.ProductId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdProductImageDto>(values);
         }
     }
 }

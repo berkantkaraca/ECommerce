@@ -1,36 +1,33 @@
-﻿<div class="thumb-gallery-wrapper">
+﻿@model GetByIdProductImageDto
+
+<div class="thumb-gallery-wrapper">
 	<div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3">
+
+        <div>
+			<img alt="image" class="img-fluid" src="@Model.Image1" data-zoom-image="@Model.Image1">
+        </div>
 		<div>
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7.jpg" data-zoom-image="img/products/product-grey-7.jpg">
+			<img alt="image" class="img-fluid" src="@Model.Image2" data-zoom-image="@Model.Image2">
 		</div>
 		<div>
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7-2.jpg" data-zoom-image="img/products/product-grey-7-2.jpg">
+			<img alt="image" class="img-fluid" src="@Model.Image3" data-zoom-image="@Model.Image3">
 		</div>
 		<div>
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7-3.jpg" data-zoom-image="img/products/product-grey-7-3.jpg">
-		</div>
-		<div>
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7-4.jpg" data-zoom-image="img/products/product-grey-7-4.jpg">
-		</div>
-		<div>
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7-5.jpg" data-zoom-image="img/products/product-grey-7-5.jpg">
+			<img alt="image" class="img-fluid" src="@Model.Image4" data-zoom-image="@Model.Image4">
 		</div>
 	</div>
 	<div class="thumb-gallery-thumbs owl-carousel owl-theme manual thumb-gallery-thumbs">
 		<div class="cur-pointer">
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7.jpg">
+			<img alt="image" class="img-fluid" src="@Model.Image1">
 		</div>
 		<div class="cur-pointer">
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7-2.jpg">
+			<img alt="image" class="img-fluid" src="@Model.Image2">
 		</div>
 		<div class="cur-pointer">
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7-3.jpg">
+			<img alt="image" class="img-fluid" src="@Model.Image3">
 		</div>
 		<div class="cur-pointer">
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7-4.jpg">
-		</div>
-		<div class="cur-pointer">
-			<img alt="" class="img-fluid" src="~/template/site/img/products/product-grey-7-5.jpg">
+			<img alt="image" class="img-fluid" src="@Model.Image4">
 		</div>
 	</div>
 </div>
