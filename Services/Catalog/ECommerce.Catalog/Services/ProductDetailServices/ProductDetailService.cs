@@ -25,20 +25,21 @@ namespace ECommerce.Catalog.Services.ProductDetailServices
             await _productDetailCollection.InsertOneAsync(value);
         }
 
-        public async Task DeleteProductDetailAsync(string id)
-        {
-            await _productDetailCollection.DeleteOneAsync(x => x.ProductDetailId == id);
-        }
-
         public async Task<List<ResultProductDetailDto>> GetAllProductDetailAsync()
         {
             var values = await _productDetailCollection.Find(x => true).ToListAsync();
             return _mapper.Map<List<ResultProductDetailDto>>(values);
         }
 
-        public async Task<GetByIdProductDetailDto> GetProductDetailByIdAsync(string id)
+        public async Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id)
         {
             var value = await _productDetailCollection.Find<ProductDetail>(x => x.ProductDetailId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdProductDetailDto>(value);
+        }
+
+        public async Task<GetByIdProductDetailDto> GetByProductIdProductDetailAsync(string id)
+        {
+            var value = await _productDetailCollection.Find<ProductDetail>(x => x.ProductId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductDetailDto>(value);
         }
 
@@ -46,6 +47,11 @@ namespace ECommerce.Catalog.Services.ProductDetailServices
         {
             var value = _mapper.Map<ProductDetail>(updateProductDetailDto);
             await _productDetailCollection.FindOneAndReplaceAsync(x => x.ProductDetailId == updateProductDetailDto.ProductDetailId, value);
+        }
+
+        public async Task DeleteProductDetailAsync(string id)
+        {
+            await _productDetailCollection.DeleteOneAsync(x => x.ProductDetailId == id);
         }
     }
 }

@@ -15,6 +15,7 @@
 				<th>Fiyat</th>
 				<th>Kategori</th>
 				<th>Ürün Görselleri</th>
+				<th>Ürün Detayları</th>
 				<th>Sil</th>
 				<th>Güncelle</th>
 			</tr>
@@ -28,9 +29,8 @@
 					<td>@item.ProductName</td>
 					<td>@item.ProductPrice.ToString("N2")</td>
 					<td>@item.Category.CategoryName</td>
-					<td class="actions">
-						<a href="ProductImages/@item.ProductId" class="on-default remove-row"><i class="fa-solid fa-images"></i></a>
-					</td>
+					<td class="actions"><a href="ProductImages/@item.ProductId" class="on-default remove-row"><i class="fa-solid fa-images"></i></a></td>
+					<td class="actions"><a href="UpdateProductDetail/@item.ProductId" class="on-default remove-row"><i class="fa fa-pencil-square"></i></a></td>
 					<td class="actions">
 						<a href="DeleteProduct/@item.ProductId" class="on-default remove-row"><i class="far fa-trash-alt"></i></a>
 					</td>

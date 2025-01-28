@@ -1,10 +1,13 @@
 ﻿using ECommerce.Catalog.Dtos.ProductDetailDtos;
 using ECommerce.Catalog.Services.ProductDetailServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Catalog.Controllers
 {
+    //[Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductDetailsController : ControllerBase
@@ -26,7 +29,14 @@ namespace ECommerce.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductDetailById(string id)
         {
-            var values = await _productDetailService.GetProductDetailByIdAsync(id);
+            var values = await _productDetailService.GetByIdProductDetailAsync(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetProductDetailByProductId")]
+        public async Task<IActionResult> GetProductDetailByProductId(string id)
+        {
+            var values = await _productDetailService.GetByProductIdProductDetailAsync(id);
             return Ok(values);
         }
 
@@ -37,18 +47,18 @@ namespace ECommerce.Catalog.Controllers
             return Ok("Ürün detayı eklendi.");
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteProductDetail(string id)
-        {
-            await _productDetailService.DeleteProductDetailAsync(id);
-            return Ok("Ürün detayı silindi.");
-        }
-
         [HttpPut]
         public async Task<IActionResult> UpdateProductDetail(UpdateProductDetailDto updateProductDetailDto)
         {
             await _productDetailService.UpdateProductDetailAsync(updateProductDetailDto);
             return Ok("Ürün detayı güncellendi.");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProductDetail(string id)
+        {
+            await _productDetailService.DeleteProductDetailAsync(id);
+            return Ok("Ürün detayı silindi.");
         }
     }
 }

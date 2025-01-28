@@ -1,4 +1,5 @@
 ﻿using ECommerce.DtoLayer.CatalogDtos.CategoryDtos;
+using ECommerce.DtoLayer.CatalogDtos.ProductDetailDtos;
 using ECommerce.DtoLayer.CatalogDtos.ProductDtos;
 using ECommerce.DtoLayer.CatalogDtos.ProductImageDtos;
 using Microsoft.AspNetCore.Authorization;
@@ -188,6 +189,41 @@ namespace ECommerce.WebUI.Areas.Admin.Controllers
             var jsonData = JsonConvert.SerializeObject(updateProductImageDto);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var response = await client.PutAsync("https://localhost:7070/api/ProductImages", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" });
+            }
+            return View();
+        }
+
+        [HttpGet]
+        [Route("UpdateProductDetail/{id}")]
+        public async Task<IActionResult> UpdateProductDetail(string id)
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Ürün Deatay";
+            ViewBag.v3 = "Ürün Deatay Güncelleme";
+            ViewBag.v4 = "Ürün Deatay Güncelleme";
+
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync("https://localhost:7070/api/ProductDetails/GetProductDetailByProductId?id=" + id);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData = await response.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateProductDetailDto>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [Route("UpdateProductDetail/{id}")]
+        public async Task<IActionResult> UpdateProductDetail(UpdateProductDetailDto updateProductDetailDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateProductDetailDto);
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var response = await client.PutAsync("https://localhost:7070/api/ProductDetails", content);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" });

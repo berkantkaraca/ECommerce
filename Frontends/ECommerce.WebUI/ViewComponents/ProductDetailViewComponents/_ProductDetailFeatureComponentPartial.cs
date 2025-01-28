@@ -26,7 +26,6 @@ namespace ECommerce.WebUI.ViewComponents.ProductDetailViewComponents
                 return View(values);
             }
 
-
             return View();
         }
     }
