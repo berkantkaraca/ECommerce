@@ -1,0 +1,37 @@
+﻿@model List<ResultCommentDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Admin/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card-body">
+	<table class="table table-bordered table-striped mb-0" id="datatable-editable">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Kullanıcı Adı</th>
+				<th>Yorum</th>
+				<th>Tarih</th>
+				<th>Durum</th>
+				<th>Sil</th>
+				<th>Güncelle</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				count++;
+				<tr data-item-id="@count">
+					<th>@count</th>
+					<td>@item.NameSurname</td>
+					<td>@item.CommentDetail</td>
+					<td>@item.CreatedDate.ToShortDateString()</td>
+					<td>@item.Status</td>
+					<td class="actions"><a href="DeleteComment/@item.UserCommentId" class="on-default remove-row"><i class="far fa-trash-alt"></i></a></td>
+					<td class="actions"><a href="UpdateComment/@item.UserCommentId" class="on-default edit-row"><i class="fas fa-pencil-alt"></i></a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,45 @@
+﻿@model UpdateCommentDto
+
+@{
+    ViewData["Title"] = "UpdateComment";
+    Layout = "~/Areas/Admin/Views/Admin/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <section class="card">
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" asp-for="UserCommentId" class="form-control" />
+                    <input type="hidden" asp-for="ProductId" class="form-control" />
+
+                    <label>Kullanıcı</label>
+                    <input type="text" asp-for="NameSurname" class="form-control" />
+                    <br />
+
+                    <label>Görsel Url</label>
+                    <input type="text" asp-for="ImageUrl" class="form-control" />
+                    <br />
+
+                    <label>E-mail</label>
+                    <input type="text" asp-for="Email" class="form-control" />
+                    <br />
+
+                    <label>Puan</label>
+                    <input type="number" asp-for="Rating" class="form-control" />
+                    <br />
+
+                    <label>Tarih</label>
+                    <input type="date" asp-for="CreatedDate" class="form-control" />
+                    <br />
+
+                    <label>Yorum</label>
+                    <textarea rows="3" asp-for="CommentDetail" class="form-control"></textarea>
+                    <br />
+
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

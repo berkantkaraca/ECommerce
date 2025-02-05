@@ -1,0 +1,36 @@
+﻿<h4>Yorumunuzu Ekleyin</h4>
+<div class="row">
+    <div class="col">
+
+        <form asp-action="AddComment" asp-controller="Product" id="submitReview" method="post">
+            <div class="row">
+                <div class="form-group col pb-2">
+                    <label class="form-label required font-weight-bold text-dark">Rating</label>
+                    <input type="text" class="rating-loading" value="0" title="" data-plugin-star-rating data-plugin-options="{'color': 'primary', 'size':'sm'}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    <label class="form-label required font-weight-bold text-dark">Ad - Soyad</label>
+                    <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="NameSurname" required>
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="form-label required font-weight-bold text-dark">Email</label>
+                    <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="Email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col">
+                    <label class="form-label required font-weight-bold text-dark">Yorum</label>
+                    <textarea maxlength="5000" data-msg-required="Please enter your review." rows="8" class="form-control" name="CommentDetail" id="review" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col mb-0">
+                    <input type="submit" value="Post Review" class="btn btn-primary btn-modern" data-loading-text="Loading...">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
