@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Services\Catalog\ECommerce.Catalog\ECommerce.Catalog.csproj" />
     <ProjectReference Include="..\ECommerce.DtoLayer\ECommerce.DtoLayer.csproj" />
   </ItemGroup>
 

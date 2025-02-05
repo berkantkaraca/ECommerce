@@ -3,6 +3,7 @@ using ECommerce.Catalog.Services.BannerServices;
 using ECommerce.Catalog.Services.BrandServices;
 using ECommerce.Catalog.Services.CampaignServices;
 using ECommerce.Catalog.Services.CategoryServices;
+using ECommerce.Catalog.Services.ContactSevices;
 using ECommerce.Catalog.Services.FeatureServices;
 using ECommerce.Catalog.Services.ProductDetailServices;
 using ECommerce.Catalog.Services.ProductImageServices;
@@ -33,6 +34,7 @@ builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<ISocialMediaService, SocialMediaService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

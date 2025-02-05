@@ -4,6 +4,7 @@ using ECommerce.Catalog.Dtos.BannerDtos;
 using ECommerce.Catalog.Dtos.BrandDtos;
 using ECommerce.Catalog.Dtos.CampaignDtos;
 using ECommerce.Catalog.Dtos.CategoryDtos;
+using ECommerce.Catalog.Dtos.ContactDtos;
 using ECommerce.Catalog.Dtos.FeatureDtos;
 using ECommerce.Catalog.Dtos.ProductDetailDtos;
 using ECommerce.Catalog.Dtos.ProductDtos;
@@ -67,6 +68,11 @@ namespace ECommerce.Catalog.Mapping
             CreateMap<SocialMedia, GetByIdSocialMediaDto>().ReverseMap();
             CreateMap<SocialMedia, ResultSocialMediaDto>().ReverseMap();
             CreateMap<SocialMedia, UpdateSocialMediaDto>().ReverseMap();
+
+            CreateMap<Contact, CreateContactDto>().ReverseMap();
+            CreateMap<Contact, GetByIdContactDto>().ReverseMap();
+            CreateMap<Contact, ResultContactDto>().ReverseMap();
+            CreateMap<Contact, UpdateContactDto>().ReverseMap();
         }
     }
 }
