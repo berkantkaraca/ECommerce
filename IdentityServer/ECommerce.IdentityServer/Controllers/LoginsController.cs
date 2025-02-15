@@ -1,5 +1,6 @@
 ﻿using ECommerce.IdentityServer.Dtos;
 using ECommerce.IdentityServer.Models;
+using ECommerce.IdentityServer.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,13 +29,11 @@ namespace ECommerce.IdentityServer.Controllers
 
             if (result.Succeeded)
             {
-                return Ok("Giriş Başarılı");
-
-                //GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
-                //model.Username = userLoginDto.Username;
-                //model.Id = user.Id;
-                //var token = JwtTokenGenerator.GenerateToken(model);
-                //return Ok(token);
+                GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
+                model.Username = userLoginDto.Username;
+                model.Id = user.Id;
+                var token = JwtTokenGenerator.GenerateToken(model);
+                return Ok(token);
             }
             else
             {

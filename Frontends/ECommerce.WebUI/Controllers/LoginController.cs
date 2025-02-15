@@ -37,7 +37,7 @@ namespace ECommerce.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var content = new StringContent(JsonSerializer.Serialize(signInDto), Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:5001/api/Logins", content);
+            var response = await client.PostAsync("http://localhost:5001/api/Logins", content);
 
             if (response.IsSuccessStatusCode)
             {
