@@ -57,15 +57,5 @@ namespace ECommerce.WebUI.Controllers
             }
             return View();
         }
-        public IActionResult Deneme1()
-        {
-            return View();
-        }
-
-        public async Task<IActionResult> Deneme2()
-        {
-            var values = await _categoryService.GetAllCategoryAsync();
-            return View(values);
-        }
     }
 }

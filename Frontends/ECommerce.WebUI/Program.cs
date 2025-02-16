@@ -1,4 +1,8 @@
 using ECommerce.WebUI.Services;
+using ECommerce.WebUI.Services.Concrete;
+using ECommerce.WebUI.Services.Interfaces;
+using ECommerce.WebUI.Settings;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,9 +22,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.Cookie.Name = "ECommerceJwt";
 });
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
+{
+    opt.LoginPath = "/Login/Index/";
+    opt.ExpireTimeSpan = TimeSpan.FromDays(5);
+    opt.Cookie.Name = "ECommerceCookie";
+    opt.SlidingExpiration = true;
+});
+
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddHttpClient<IIdentityService, IdentityService>();
+
+builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
+builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
 
 var app = builder.Build();
 

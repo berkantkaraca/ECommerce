@@ -1,6 +1,7 @@
 ﻿using ECommerce.DtoLayer.IdentityDtos.LoginDtos;
 using ECommerce.WebUI.Models;
 using ECommerce.WebUI.Services;
+using ECommerce.WebUI.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
@@ -15,13 +16,13 @@ namespace ECommerce.WebUI.Controllers
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILoginService _loginService;
-        //private readonly IIdentityService _identityService;
-        //public LoginController(IHttpClientFactory httpClientFactory, IIdentityService identityService)
-        public LoginController(IHttpClientFactory httpClientFactory, ILoginService loginService)
+        private readonly IIdentityService _identityService;
+
+        public LoginController(IHttpClientFactory httpClientFactory, ILoginService loginService, IIdentityService identityService)
         {
             _httpClientFactory = httpClientFactory;
             _loginService = loginService;
-            //_identityService = identityService;
+            _identityService = identityService;
         }
 
         [HttpGet]
@@ -76,5 +77,17 @@ namespace ECommerce.WebUI.Controllers
 
             return View();
         }
+
+
+        public async Task<IActionResult> SignIn(SignInDto signInDto)
+        {
+            signInDto.Username = "berkant";
+            signInDto.Password = "123456aA*";
+
+            await _identityService.SignIn(signInDto);
+            return RedirectToAction("Index", "Test");
+        }
+
+
     }
 }
