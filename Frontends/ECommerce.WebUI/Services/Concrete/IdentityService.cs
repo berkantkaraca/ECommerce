@@ -82,9 +82,7 @@ namespace ECommerce.WebUI.Services.Concrete
         {
             var discoveryEndPoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
             {
-
-                Address = "http://localhost:5001",
-                //Address = _serviceApiSettings.IdentityServerUrl,
+                Address = _serviceApiSettings.IdentityServerUrl,
                 Policy = new DiscoveryPolicy
                 {
                     RequireHttps = false

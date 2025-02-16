@@ -82,6 +82,10 @@ namespace ECommerce.IdentityServer
                     "CommentFullPermission",
                     "PaymentFullPermission",
                     "ImageFullPermission",
+                    IdentityServerConstants.LocalApi.ScopeName,
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    IdentityServerConstants.StandardScopes.Email
                 }
             },
 
