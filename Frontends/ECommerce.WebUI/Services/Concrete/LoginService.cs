@@ -1,6 +1,7 @@
-﻿using System.Security.Claims;
+﻿using ECommerce.WebUI.Services.Interfaces;
+using System.Security.Claims;
 
-namespace ECommerce.WebUI.Services
+namespace ECommerce.WebUI.Services.Concrete
 {
     public class LoginService : ILoginService
     {

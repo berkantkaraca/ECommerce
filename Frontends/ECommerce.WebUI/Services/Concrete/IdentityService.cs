@@ -7,7 +7,6 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Security.Claims;
 using ECommerce.WebUI.Settings;
 using IdentityModel.Client;
-using static System.Net.WebRequestMethods;
 
 namespace ECommerce.WebUI.Services.Concrete
 {

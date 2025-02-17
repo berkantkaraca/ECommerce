@@ -1,14 +1,6 @@
 ﻿using ECommerce.DtoLayer.IdentityDtos.LoginDtos;
-using ECommerce.WebUI.Models;
-using ECommerce.WebUI.Services;
 using ECommerce.WebUI.Services.Interfaces;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Json;
 
 namespace ECommerce.WebUI.Controllers
 {
@@ -44,7 +36,7 @@ namespace ECommerce.WebUI.Controllers
             signInDto.Password = "123456aA*";
 
             await _identityService.SignIn(signInDto);
-            return RedirectToAction("Index", "Test");
+            return RedirectToAction("Index", "User");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ECommerce.WebUI.Services
+﻿namespace ECommerce.WebUI.Services.Interfaces
 {
     public interface ILoginService
     {
