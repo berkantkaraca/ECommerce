@@ -1,10 +1,9 @@
-﻿using ECommerce.Catalog.Services.CategoryServices;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using ECommerce.DtoLayer.CatalogDtos.CategoryDtos;
+using ECommerce.WebUI.Services.CatalogServices.CategoryServices;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
-using ECommerce.DtoLayer.CatalogDtos.CategoryDtos;
-//using ECommerce.WebUI.Services.CatalogServices.CategoryServices;
-using Newtonsoft.Json;
 
 namespace ECommerce.WebUI.Controllers
 {
@@ -56,6 +55,12 @@ namespace ECommerce.WebUI.Controllers
                 return View(values);
             }
             return View();
+        }
+
+        public async Task<IActionResult> Deneme2()
+        {
+            var values = await _categoryService.GetAllCategoryAsync();
+            return View(values);
         }
     }
 }
