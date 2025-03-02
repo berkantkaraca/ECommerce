@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Comment.Controllers
 {
-    //[Authorize]
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CommentsController : ControllerBase
@@ -32,7 +31,7 @@ namespace ECommerce.Comment.Controllers
             return Ok(value);
         }
 
-        [HttpGet("CommentListByProductId")]
+        [HttpGet("CommentListByProductId/{id}")]
         public IActionResult CommentListByProductId(string id)
         {
             var value = _context.UserComments.Where(x => x.ProductId == id).ToList();
