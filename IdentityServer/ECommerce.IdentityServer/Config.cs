@@ -64,6 +64,7 @@ namespace ECommerce.IdentityServer
                     "OcelotFullPermission",
                     "CommentFullPermission",
                     "ImageFullPermission",
+                    IdentityServerConstants.LocalApi.ScopeName,
                 }
             },
 

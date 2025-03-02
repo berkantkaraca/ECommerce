@@ -1,5 +1,5 @@
-﻿using ECommerce.Catalog.Services.ContactSevices;
-using ECommerce.DtoLayer.CatalogDtos.ContactDtos;
+﻿using ECommerce.DtoLayer.CatalogDtos.ContactDtos;
+using ECommerce.WebUI.Services.CatalogServices.ContactServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -8,17 +8,10 @@ namespace ECommerce.WebUI.Controllers
 {
     public class ContactController : Controller
     {
-        //private readonly IContactService _contactService;
-        //public ContactController(IContactService contactService)
-        //{
-        //    _contactService = contactService;
-        //}
-
-        private readonly IHttpClientFactory _httpClientFactory;
-
-        public ContactController(IHttpClientFactory httpClientFactory)
+        private readonly IContactService _contactService;
+        public ContactController(IContactService contactService)
         {
-            _httpClientFactory = httpClientFactory;
+            _contactService = contactService;
         }
 
         [HttpGet]
@@ -35,20 +28,8 @@ namespace ECommerce.WebUI.Controllers
         {
             createContactDto.IsRead = false;
             createContactDto.SendDate = DateTime.Now;
-            createContactDto.NameSurname = "Test";
-
-            //await _contactService.CreateContactAsync(createContactDto);
-            //return RedirectToAction("Index", "Default");
-
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createContactDto);
-            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:7070/api/Contacts", content);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Default");
-            }
-            return View();
+            await _contactService.CreateContactAsync(createContactDto);
+            return RedirectToAction("Index", "Default");
         }
     }
 }
