@@ -1,4 +1,5 @@
 ﻿using ECommerce.DtoLayer.CatalogDtos.ProductImageDtos;
+using ECommerce.WebUI.Services.CatalogServices.ProductImageServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -6,27 +7,17 @@ namespace ECommerce.WebUI.ViewComponents.ProductDetailViewComponents
 {
     public class _ProductDetailImagesComponentPartial : ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IProductImageService _productImageService;
 
-        public _ProductDetailImagesComponentPartial(IHttpClientFactory httpClientFactory)
+        public _ProductDetailImagesComponentPartial(IProductImageService productImageService)
         {
-            _httpClientFactory = httpClientFactory;
+            _productImageService = productImageService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string id)
         {
-            var client = _httpClientFactory.CreateClient();
-
-
-            var response = await client.GetAsync("https://localhost:7070/api/ProductImages/ProductImagesByProductId?id=" + id);
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<GetByIdProductImageDto>(jsonData);
-                return View(values);
-            }
-
-            return View();
+            var values = await _productImageService.GetByProductIdProductImageAsync(id);
+            return View(values);
         }
     }
 }

@@ -32,7 +32,9 @@
                                                         <option value="all" selected>Tüm Kategoriler</option>
                                                         @foreach (var item in Model)
                                                         {
-                                                            <option value="@item.CategoryName">@item.CategoryName</option>
+                                                            <option value="@item.CategoryName">
+                                                                <a href="Product/ProductList/@item.CategoryId">@item.CategoryName</a>
+                                                            </option>
                                                         }
                                                     </select>
                                                 </div>

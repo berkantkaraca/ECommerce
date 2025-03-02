@@ -1,98 +1,33 @@
-﻿using ECommerce.DtoLayer.CatalogDtos.AboutDtos;
-using ECommerce.DtoLayer.CatalogDtos.SocialMediaDtos;
-using ECommerce.WebUI.Models;
+﻿using ECommerce.WebUI.Models;
+using ECommerce.WebUI.Services.CatalogServices.AboutServices;
+using ECommerce.WebUI.Services.CatalogServices.SocialMediaServices;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Net.Http.Headers;
 
 namespace ECommerce.WebUI.ViewComponents.UILayoutViewComponents
 {
     public class _UILayoutFooterComponentPartial : ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IAboutService _aboutService;
+        private readonly ISocialMediaService _socialMediaService;
 
-        public _UILayoutFooterComponentPartial(IHttpClientFactory httpClientFactory)
+        public _UILayoutFooterComponentPartial(IAboutService aboutService, ISocialMediaService socialMediaService)
         {
-            _httpClientFactory = httpClientFactory;
+            _aboutService = aboutService;
+            _socialMediaService = socialMediaService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //var client = _httpClientFactory.CreateClient();
+            var aboutValues = await _aboutService.GetAllAboutAsync();
+            var socialMediaValues = await _socialMediaService.GetAllSocialMediaAsync();
 
-            //var aboutsResponse = await client.GetAsync("https://localhost:7070/api/Abouts");
-            //var socialMediasResponse = await client.GetAsync("https://localhost:7070/api/SocialMedias");
-
-
-            //if (aboutsResponse.IsSuccessStatusCode && socialMediasResponse.IsSuccessStatusCode)
-            //{
-            //    var aboutsJson = await aboutsResponse.Content.ReadAsStringAsync();
-            //    var abouts = JsonConvert.DeserializeObject<List<ResultAboutDto>>(aboutsJson);
-
-            //    var socialMediasJson = await socialMediasResponse.Content.ReadAsStringAsync();
-            //    var socialMedias = JsonConvert.DeserializeObject<List<ResultSocialMediaDto>>(socialMediasJson);
-
-            //    var model = new FooterViewModel
-            //    {
-            //        Abouts = abouts,
-            //        SocialMedias = socialMedias
-            //    };
-
-            //    return View(model);
-            //}
-
-            //return View();
-
-            string token = "";
-            using (var httpClient = new HttpClient())
+            var model = new FooterViewModel
             {
-                var request = new HttpRequestMessage
-                {
-                    RequestUri = new Uri("http://localhost:5001/connect/token"),
-                    Method = HttpMethod.Post,
-                    Content = new FormUrlEncodedContent(new Dictionary<string, string>
-                    {
-                        {"client_id","ECommerceVisitorId" },
-                        {"client_secret","ecommercesecret" },
-                        {"grant_type","client_credentials" }
-                    })
-                };
+                Abouts = aboutValues,
+                SocialMedias = socialMediaValues
+            };
 
-                using (var response = await httpClient.SendAsync(request))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var content = await response.Content.ReadAsStringAsync();
-                        var tokenResponse = JObject.Parse(content);
-                        token = tokenResponse["access_token"].ToString();
-                    }
-                }
-            }
-
-            var client = _httpClientFactory.CreateClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-            var aboutsResponse = await client.GetAsync("https://localhost:7070/api/Abouts");
-            var socialMediasResponse = await client.GetAsync("https://localhost:7070/api/SocialMedias");
-
-            if (aboutsResponse.IsSuccessStatusCode && socialMediasResponse.IsSuccessStatusCode)
-            {
-                var aboutsJson = await aboutsResponse.Content.ReadAsStringAsync();
-                var abouts = JsonConvert.DeserializeObject<List<ResultAboutDto>>(aboutsJson);
-
-                var socialMediasJson = await socialMediasResponse.Content.ReadAsStringAsync();
-                var socialMedias = JsonConvert.DeserializeObject<List<ResultSocialMediaDto>>(socialMediasJson);
-
-                var model = new FooterViewModel
-                {
-                    Abouts = abouts,
-                    SocialMedias = socialMedias
-                };
-
-                return View(model);
-            }
-            return View();
+            return View(model);
         }
     }
 }
