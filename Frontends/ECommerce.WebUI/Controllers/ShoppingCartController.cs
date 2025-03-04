@@ -23,10 +23,13 @@ namespace ECommerce.WebUI.Controllers
 
             var values = await _basketService.GetBasket();
             ViewBag.total = values.TotalPrice;
+
             var totalPriceWithTax = values.TotalPrice + values.TotalPrice / 100 * 10;
-            var tax = values.TotalPrice / 100 * 10;
             ViewBag.totalPriceWithTax = totalPriceWithTax;
+
+            var tax = values.TotalPrice / 100 * 10;
             ViewBag.tax = tax;
+
             return View();
         }
 

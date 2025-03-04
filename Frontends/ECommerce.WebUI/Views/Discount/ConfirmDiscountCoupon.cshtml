@@ -1,0 +1,80 @@
+﻿<div class="col-lg-4 position-relative">
+    <div class="card border-width-3 border-radius-0 border-color-hover-dark" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.row', 'padding': {'top': 85}}">
+
+        <form class="mb-30" asp-controller="Discount" asp-action="ConfirmDiscountCoupon" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control h-auto border-radius-0 line-height-1 py-3" name="code" value="@ViewBag.code" placeholder="Kupon Kodunuz" />
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-light btn-modern text-color-dark bg-color-light-scale-2 text-color-hover-light bg-color-hover-primary text-uppercase text-3 font-weight-bold border-0 border-radius-0 ws-nowrap btn-px-4 py-3 ms-2">Uygula</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="card-body">
+            <h4 class="font-weight-bold text-uppercase text-4 mb-3">Sipariş Özeti</h4>
+            <table class="shop_table cart-totals mb-4">
+                <tbody>
+                    <tr class="cart-subtotal">
+                        <td class="border-top-0">
+                            <strong class="text-color-dark">Toplam Ürün Fiyatı</strong>
+                        </td>
+                        <td class="border-top-0 text-end">
+                            <strong><span class="amount font-weight-medium">@ViewBag.total.ToString("C")</span></strong>
+                        </td>
+                    </tr>
+
+                    <tr class="cart-subtotal">
+                        <td class="border-top-0">
+                            <strong class="text-color-dark">KDV</strong>
+                        </td>
+
+                        <td class="border-top-0 text-end">
+                            <strong><span class="amount font-weight-medium">@ViewBag.tax.ToString("C")</span></strong>
+                        </td>
+                    </tr>
+
+                    <tr class="cart-subtotal">
+                        <td class="border-top-0">
+                            <strong class="text-color-dark">İndirim Oranı</strong>
+                        </td>
+
+                        <td class="border-top-0 text-end">
+                            <strong><span class="amount font-weight-medium">% @ViewBag.discountRate</span></strong>
+                        </td>
+                    </tr>
+
+                    <tr class="cart-subtotal">
+                        <td class="border-top-0">
+                            <strong class="text-color-dark">İndirimsiz Fiyat</strong>
+                        </td>
+
+                        <td class="border-top-0 text-end">
+                            <strong><span class="amount font-weight-medium">@ViewBag.totalPriceWithTax.ToString("C")</span></strong>
+                        </td>
+                    </tr>
+
+                    @* <tr class="cart-subtotal"> *@
+                    @*     <td class="border-top-0"> *@
+                    @*         <strong class="text-color-dark">İndirim Fiyatı</strong> *@
+                    @*     </td> *@
+
+                    @*     <td class="border-top-0 text-end"> *@
+                    @*         <strong><span class="amount font-weight-medium">@ViewBag.discountPrice.ToString("C")</span></strong> *@
+                    @*     </td> *@
+                    @* </tr> *@
+
+                    <tr class="total">
+                        <td>
+                            <strong class="text-color-dark text-3-5">Ödenecek Tutar</strong>
+                        </td>
+                        <td class="text-end">
+                            <strong class="text-color-dark"><span class="amount text-color-dark text-5">@ViewBag.totalNewPriceWithDiscount.ToString("C")</span></strong>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <a href="shop-checkout.html" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">Siparişi Ver<i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </div>
+</div>

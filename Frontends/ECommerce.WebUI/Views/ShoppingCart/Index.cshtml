@@ -9,66 +9,8 @@
 	<div class="container">
 		<div class="row pb-4 mb-5">
 			@await Component.InvokeAsync("_ShoppingCartProductListComponentPartial")
-			
 
-			<div class="col-lg-4 position-relative">
-				<div class="card border-width-3 border-radius-0 border-color-hover-dark" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.row', 'padding': {'top': 85}}">
-
-					<form class="mb-30" asp-controller="Discount" asp-action="ConfirmDiscountCoupon" method="post">
-						<div class="input-group">
-							<input type="text" class="form-control h-auto border-radius-0 line-height-1 py-3" name="couponCode" placeholder="Kupon Kodunuz" />
-							<div class="input-group-append">
-								<button type="submit" class="btn btn-light btn-modern text-color-dark bg-color-light-scale-2 text-color-hover-light bg-color-hover-primary text-uppercase text-3 font-weight-bold border-0 border-radius-0 ws-nowrap btn-px-4 py-3 ms-2">Uygula</button>
-							</div>
-						</div>
-					</form>
-
-					<div class="card-body">
-						<h4 class="font-weight-bold text-uppercase text-4 mb-3">Cart Totals</h4>
-						<table class="shop_table cart-totals mb-4">
-							<tbody>
-								<tr class="cart-subtotal">
-									<td class="border-top-0">
-										<strong class="text-color-dark">Subtotal</strong>
-									</td>
-									<td class="border-top-0 text-end">
-										<strong><span class="amount font-weight-medium">$431</span></strong>
-									</td>
-								</tr>
-								<tr class="shipping">
-									<td colspan="2">
-										<strong class="d-block text-color-dark mb-2">Shipping</strong>
-
-										<div class="d-flex flex-column">
-											<label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method1">
-												<input id="shipping_method1" type="radio" class="me-2" name="shipping_method" value="free" checked />
-												Free Shipping
-											</label>
-											<label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method2">
-												<input id="shipping_method2" type="radio" class="me-2" name="shipping_method" value="local-pickup" />
-												Local Pickup
-											</label>
-											<label class="d-flex align-items-center text-color-grey mb-0" for="shipping_method3">
-												<input id="shipping_method3" type="radio" class="me-2" name="shipping_method" value="flat-rate" />
-												Flat Rate: $5.00
-											</label>
-										</div>
-									</td>
-								</tr>
-								<tr class="total">
-									<td>
-										<strong class="text-color-dark text-3-5">Total</strong>
-									</td>
-									<td class="text-end">
-										<strong class="text-color-dark"><span class="amount text-color-dark text-5">$431</span></strong>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<a href="shop-checkout.html" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">Proceed to Checkout <i class="fas fa-arrow-right ms-2"></i></a>
-					</div>
-				</div>
-			</div>
+			@await Html.PartialAsync("~/Views/Discount/ConfirmDiscountCoupon.cshtml");
 		</div>
 	</div>
 

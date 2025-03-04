@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace ECommerce.Discount.Controllers
 {
     [Authorize]
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class DiscountsController : ControllerBase
@@ -30,6 +29,27 @@ namespace ECommerce.Discount.Controllers
         public async Task<IActionResult> GetDiscountCouponById(int id)
         {
             var values = await _discountService.GetByIdDiscountCouponAsync(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetCodeDetailByCodeAsync")]
+        public async Task<IActionResult> GetCodeDetailByCodeAsync(string code)
+        {
+            var values = await _discountService.GetCodeDetailByCodeAsync(code);
+            return Ok(values);
+        }
+
+        [HttpGet("GetDiscountCouponCountRate")]
+        public IActionResult GetDiscountCouponCountRate(string code)
+        {
+            var values = _discountService.GetDiscountCouponCountRate(code);
+            return Ok(values);
+        }
+
+        [HttpGet("GetDiscountCouponCount")]
+        public async Task<IActionResult> GetDiscountCouponCount()
+        {
+            var values = await _discountService.GetDiscountCouponCount();
             return Ok(values);
         }
 
