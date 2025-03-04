@@ -1,0 +1,51 @@
+﻿@model List<BasketItemDto>
+
+<div class="col-lg-8 mb-5 mb-lg-0">
+	<form method="post" action="">
+		<div class="table-responsive">
+			<table class="shop_table cart">
+				<thead>
+					<tr class="text-color-dark">
+						<th class="product-thumbnail" width="15%">&nbsp;</th>
+						<th class="product-name text-uppercase" width="30%">Ürün</th>
+						<th class="product-price text-uppercase" width="15%">Fiyat</th>
+						<th class="product-quantity text-uppercase" width="20%">Adet</th>
+						<th class="product-subtotal text-uppercase text-end" width="20%">Toplam</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr class="cart_table_item">
+							<td class="product-thumbnail">
+								<div class="product-thumbnail-wrapper">
+									<a href="/ShoppingCart/RemoveBasketItem/@item.ProductId" class="product-thumbnail-remove" title="Sil"><i class="fas fa-times"></i></a>
+									<a href="shop-product-sidebar-right.html" class="product-thumbnail-image" title="Photo Camera">
+										<img width="90" height="90" alt="" class="img-fluid" src="@item.ProductImageUrl">
+									</a>
+								</div>
+							</td>
+							<td class="product-name">
+								<a href="shop-product-sidebar-right.html" class="font-weight-semi-bold text-color-dark text-color-hover-primary text-decoration-none">@item.ProductName</a>
+							</td>
+							<td class="product-price">
+								<span class="amount font-weight-medium text-color-grey">@item.Price.ToString("C")</span>
+							</td>
+							<td class="product-quantity">
+								<div class="quantity float-none m-0">
+									<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
+									<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+									<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
+								</div>
+							</td>
+							<td class="product-subtotal text-end">
+								<span class="amount text-color-dark font-weight-bold text-4">$59</span>
+							</td>
+						</tr>
+					}
+					
+				</tbody>
+			</table>
+		</div>
+	</form>
+</div>
