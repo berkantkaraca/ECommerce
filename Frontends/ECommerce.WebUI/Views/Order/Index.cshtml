@@ -1,0 +1,134 @@
+﻿@model CreateOrderAddressDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+
+<div role="main" class="main shop pb-4">
+    <div class="container" style="margin-top: 50px;">
+        <form method="post">
+        <div class="row">
+            @* @await Component.InvokeAsync("_OrderDetailComponentPartial") *@
+
+            
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <h2 class="text-color-dark font-weight-bold text-5-5 mb-3">Fatura ve Teslimat Bilgisi</h2>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="form-label">Ad <span class="text-color-danger">*</span></label>
+                            <input type="text" class="form-control h-auto py-2" asp-for="Name" value="" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="form-label">Soyad <span class="text-color-danger">*</span></label>
+                            <input type="text" class="form-control h-auto py-2" asp-for="Surname" value="" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label class="form-label">Email <span class="text-color-danger">*</span></label>
+                            <input type="email" class="form-control h-auto py-2"asp-for="Email" value="" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label class="form-label">Tel No <span class="text-color-danger">*</span></label>
+                            <input type="number" class="form-control h-auto py-2" asp-for="Phone" value="" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label class="form-label">Adres Satır 1 <span class="text-color-danger">*</span></label>
+                            <input type="text" class="form-control h-auto py-2" asp-for="Detail1" value="" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <input type="text" class="form-control h-auto py-2" asp-for="Detail2" value="" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label class="form-label">Ülke <span class="text-color-danger">*</span></label>
+                            <input type="text" class="form-control h-auto py-2" asp-for="Country" value="" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label class="form-label">Şehir <span class="text-color-danger">*</span></label>
+                            <input type="text" class="form-control h-auto py-2"asp-for="City" value="" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label class="form-label">İlçe <span class="text-color-danger">*</span></label>
+                            <input type="text" class="form-control h-auto py-2" asp-for="District" value="" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label class="form-label">Posta Kodu <span class="text-color-danger">*</span></label>
+                            <input type="text" class="form-control h-auto py-2" asp-for="ZipCode" value="" required />
+                        </div>
+                    </div>
+
+                    @* <div class="row"> *@
+                    @*     <div class="form-group col"> *@
+                    @*         <label class="form-label">Order Notes</label> *@
+                    @*         <textarea class="form-control h-auto py-2" name="orderNotes" rows="5" placeholder="Notes about you orderm e.g. special notes for delivery"></textarea> *@
+                    @*     </div> *@
+                    @* </div> *@
+
+                </div>
+
+
+
+                <div class="col-lg-5 position-relative">
+                    @await Component.InvokeAsync("_OrderSummaryComponentPartial")
+
+                    @* @await Component.InvokeAsync("_OrderPaymentMethodComponentPartial") *@
+
+
+                    <div class="card border-width-3 border-radius-0 border-color-hover-dark">
+                        <div class="card-body">
+                            <table class="shop_table cart-totals mb-3">
+                                <tbody>
+                                    <tr class="payment-methods">
+                                        <td colspan="2">
+                                            <strong class="d-block text-color-dark mb-2">Ödeme Yöntemi</strong>
+
+                                            <div class="d-flex flex-column">
+                                                <label class="d-flex align-items-center text-color-grey mb-0" for="payment_method1">
+                                                    <input id="payment_method1" type="radio" class="me-2" name="payment_method" value="cash-on-delivery" checked />
+                                                    Cash On Delivery
+                                                </label>
+                                                <label class="d-flex align-items-center text-color-grey mb-0" for="payment_method2">
+                                                    <input id="payment_method2" type="radio" class="me-2" name="payment_method" value="paypal" />
+                                                    PayPal
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="submit" class="btn btn-dark btn-modern w-100 text-uppercase bg-color-hover-primary border-color-hover-primary border-radius-0 text-3 py-3">Ödeme Adımına Geç <i class="fas fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+            </form>
+    </div>
+</div>

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace ECommerce.Order.WebApi.Controllers
 {
     [Authorize]
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderingsController : ControllerBase

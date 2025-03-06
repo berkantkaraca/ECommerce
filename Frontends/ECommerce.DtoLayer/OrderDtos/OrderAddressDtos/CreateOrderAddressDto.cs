@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ECommerce.Order.Application.Features.CQRS.Commands.AddressCommands
+﻿namespace ECommerce.DtoLayer.OrderDtos.OrderAddressDtos
 {
-    public class CreateAddressCommand
+    public class CreateOrderAddressDto
     {
-        public int AddressId { get; set; }
         public string UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

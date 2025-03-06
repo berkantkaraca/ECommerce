@@ -80,6 +80,7 @@ namespace ECommerce.IdentityServer
                     "CatalogFullPermission", 
                     "OcelotFullPermission", 
                     "BasketFullPermission",
+                    "OrderFullPermission",
                     "CommentFullPermission",
                     "DiscountFullPermission",
                     "PaymentFullPermission",
