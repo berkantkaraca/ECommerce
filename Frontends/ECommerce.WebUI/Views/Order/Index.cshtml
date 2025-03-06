@@ -7,13 +7,13 @@
 <div role="main" class="main shop pb-4">
     <div class="container" style="margin-top: 50px;">
         <form method="post">
-        <div class="row">
-            @* @await Component.InvokeAsync("_OrderDetailComponentPartial") *@
+            <div class="row">
+                @* @await Component.InvokeAsync("_OrderDetailComponentPartial") *@
 
-            
+
                 <div class="col-lg-7 mb-4 mb-lg-0">
                     <h2 class="text-color-dark font-weight-bold text-5-5 mb-3">Fatura ve Teslimat Bilgisi</h2>
-                    
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-label">Ad <span class="text-color-danger">*</span></label>
@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="form-group col">
                             <label class="form-label">Email <span class="text-color-danger">*</span></label>
-                            <input type="email" class="form-control h-auto py-2"asp-for="Email" value="" required />
+                            <input type="email" class="form-control h-auto py-2" asp-for="Email" value="" required />
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                     <div class="row">
                         <div class="form-group col">
                             <label class="form-label">Şehir <span class="text-color-danger">*</span></label>
-                            <input type="text" class="form-control h-auto py-2"asp-for="City" value="" required />
+                            <input type="text" class="form-control h-auto py-2" asp-for="City" value="" required />
                         </div>
                     </div>
 
@@ -128,7 +128,7 @@
                     </div>
 
                 </div>
-        </div>
-            </form>
+            </div>
+        </form>
     </div>
 </div>
