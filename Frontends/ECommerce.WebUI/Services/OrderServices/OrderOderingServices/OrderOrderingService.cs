@@ -3,10 +3,10 @@ using Newtonsoft.Json;
 
 namespace ECommerce.WebUI.Services.OrderServices.OrderOderingServices
 {
-    public class OrderOderingService : IOrderOderingService
+    public class OrderOrderingService : IOrderOrderingService
     {
         private readonly HttpClient _httpClient;
-        public OrderOderingService(HttpClient httpClient)
+        public OrderOrderingService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }

@@ -2,7 +2,7 @@
 
 namespace ECommerce.WebUI.Services.OrderServices.OrderOderingServices
 {
-    public interface IOrderOderingService
+    public interface IOrderOrderingService
     {
         Task<List<ResultOrderingByUserIdDto>> GetOrderingByUserId(string id);
     }
