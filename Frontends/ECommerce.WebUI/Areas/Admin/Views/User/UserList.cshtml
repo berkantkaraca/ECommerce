@@ -1,0 +1,35 @@
+﻿@model List<ResultUserDto>
+
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Areas/Admin/Views/Admin/_AdminLayout.cshtml";
+	int count = 0;
+}
+
+<div class="card-body">
+	<table class="table table-bordered table-striped mb-0" id="datatable-editable">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Ad Soyad</th>
+				<th>Kullanıcı Adı</th>
+				<th>Email</th>
+				<th>Adres Detayı</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				count++;
+				<tr data-item-id="@count">
+					<th>@count</th>
+					<td>@item.name</td>
+					<td>@item.userName</td>
+					<td>@item.email</td>
+
+					<td class="actions"><a href="/Admin/User/UserAddressInfo/@item.id" class="on-default edit-row"><i class="fas fa-pencil-alt"></i> Adres Detayı</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

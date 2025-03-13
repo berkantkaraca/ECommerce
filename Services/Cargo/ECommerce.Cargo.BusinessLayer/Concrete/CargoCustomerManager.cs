@@ -1,5 +1,6 @@
 ﻿using ECommerce.Cargo.BusinessLayer.Abstract;
 using ECommerce.Cargo.DataAccessLayer.Abstract;
+using ECommerce.Cargo.DataAccessLayer.EntityFramework;
 using ECommerce.Cargo.EntityLayer.Concrete;
 
 namespace ECommerce.Cargo.BusinessLayer.Concrete
@@ -36,6 +37,11 @@ namespace ECommerce.Cargo.BusinessLayer.Concrete
         public void TUpdate(CargoCustomer entity)
         {
             _cargoCustomer.Update(entity);
+        }
+
+        public CargoCustomer TGetCargoCustomerById(string id)
+        {
+            return _cargoCustomer.GetCargoCustomerById(id);
         }
     }
 }

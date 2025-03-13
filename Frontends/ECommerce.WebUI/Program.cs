@@ -1,5 +1,7 @@
 using ECommerce.WebUI.Handlers;
 using ECommerce.WebUI.Services.BasketServices;
+using ECommerce.WebUI.Services.CargoServices.CargoCompanyServices;
+using ECommerce.WebUI.Services.CargoServices.CargoCustomerServices;
 using ECommerce.WebUI.Services.CatalogServices.AboutServices;
 using ECommerce.WebUI.Services.CatalogServices.BannerServices;
 using ECommerce.WebUI.Services.CatalogServices.BrandServices;
@@ -18,6 +20,7 @@ using ECommerce.WebUI.Services.Interfaces;
 using ECommerce.WebUI.Services.MessageServices;
 using ECommerce.WebUI.Services.OrderServices.OrderAddressServices;
 using ECommerce.WebUI.Services.OrderServices.OrderOderingServices;
+using ECommerce.WebUI.Services.UserIdentityServices;
 using ECommerce.WebUI.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -93,6 +96,22 @@ builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
+{
+    opt.BaseAddress = new Uri(values.IdentityServerUrl);
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
 
 
 // ClientCredentialTokenHandler

@@ -58,14 +58,16 @@ namespace ECommerce.IdentityServer
                 ClientName = "ECommerce Visitor User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = { new Secret("ecommercesecret".Sha256()) },
-                AllowedScopes = { 
-                    "CatalogReadPermission", 
-                    "CatalogFullPermission", 
+                AllowedScopes={
+                    "CatalogReadPermission",
+                    "CatalogFullPermission",
                     "OcelotFullPermission",
                     "CommentFullPermission",
                     "ImageFullPermission",
-                    IdentityServerConstants.LocalApi.ScopeName,
-                }
+                    "CommentFullPermission",
+                    IdentityServerConstants.LocalApi.ScopeName 
+                },
+                AllowAccessTokensViaBrowser=true
             },
 
             //Manager
@@ -75,17 +77,18 @@ namespace ECommerce.IdentityServer
                 ClientName = "ECommerce Manager User",
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = { new Secret("ecommercesecret".Sha256()) },
-                AllowedScopes = { 
+                AllowedScopes={ 
                     "CatalogReadPermission", 
                     "CatalogFullPermission", 
+                    "BasketFullPermission", 
                     "OcelotFullPermission", 
-                    "BasketFullPermission",
-                    "OrderFullPermission",
-                    "CommentFullPermission",
-                    "DiscountFullPermission",
-                    "PaymentFullPermission",
+                    "CommentFullPermission", 
+                    "PaymentFullPermission", 
                     "ImageFullPermission",
+                    "DiscountFullPermission",
+                    "OrderFullPermisson",
                     "MessageFullPermission",
+                    "CargoFullPermission",
                     IdentityServerConstants.LocalApi.ScopeName,
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
@@ -101,18 +104,17 @@ namespace ECommerce.IdentityServer
                 //AllowedGrantTypes = GrantTypes.ClientCredentials, //kullanıcı bilgisi olmadan erişim
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, //kullanıcı bilgisi ile erişim
                 ClientSecrets = { new Secret("ecommercesecret".Sha256()) },
-                AllowedScopes = {
-                    "CatalogReadPermission",
-                    "CatalogFullPermission",
-                    "DiscountFullPermission",
-                    "OrderFullPermission",
+                 AllowedScopes={ "CatalogFullPermission", 
+                    "CatalogReadPermission", 
+                    "DiscountFullPermission", 
+                    "OrderFullPermisson",
                     "CargoFullPermission",
                     "BasketFullPermission",
                     "OcelotFullPermission",
                     "CommentFullPermission",
                     "PaymentFullPermission",
                     "ImageFullPermission",
-                    "MessageFullPermission",
+                    "CargoFullPermission",
                     IdentityServerConstants.LocalApi.ScopeName,
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,

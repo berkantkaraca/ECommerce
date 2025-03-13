@@ -45,6 +45,7 @@ namespace ECommerce.Cargo.WebApi.Controllers
                 Address = crateCargoCustomerDto.Address,
                 City = crateCargoCustomerDto.City,
                 District = crateCargoCustomerDto.District,
+                UserCustomerId  = crateCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TInsert(cargoCustomer);
             return Ok("Kargo Müşterisi Oluşturuldu.");
@@ -63,6 +64,7 @@ namespace ECommerce.Cargo.WebApi.Controllers
                 Address = updateCargoCustomerDto.Address,
                 City = updateCargoCustomerDto.City,
                 District = updateCargoCustomerDto.District,
+                UserCustomerId = updateCargoCustomerDto.UserCustomerId
             };
 
             _cargoCustomerService.TUpdate(cargoCustomer);
@@ -75,6 +77,12 @@ namespace ECommerce.Cargo.WebApi.Controllers
         {
             _cargoCustomerService.TDelete(id);
             return Ok("Kargo Müşterisi Silindi.");
+        }
+
+        [HttpGet("GetCargoCustomerById")]
+        public IActionResult GetCargoCustomerById(string id)
+        {
+            return Ok(_cargoCustomerService.TGetCargoCustomerById(id));
         }
     }
 }
