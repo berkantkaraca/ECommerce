@@ -17,9 +17,13 @@ namespace ECommerce.WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> UserList()
         {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Yorumlar";
+            ViewBag.v3 = "Yorum Listesi";
+            ViewBag.v4 = "Yorum İşlemleri";
+
             var values = await _userIdentityService.GetAllUserListAsync();
             return View(values);
-            return View();
         }
 
         public async Task<IActionResult> UserAddressInfo(string id)

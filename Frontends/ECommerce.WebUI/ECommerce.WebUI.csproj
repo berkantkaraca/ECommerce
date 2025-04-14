@@ -9,6 +9,7 @@
   <ItemGroup>
     <!--<PackageReference Include="IdentityModel" Version="3.0.0" />-->
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.36" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.36" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.18" />
     <PackageReference Include="IdentityModel.AspNetCore" Version="3.0.0" />
   </ItemGroup>

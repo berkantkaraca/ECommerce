@@ -55,13 +55,13 @@
 				<div class="row">
 					<div class="form-group col">
 						<label class="form-label mb-1 text-2">Mesaj</label>
-						<textarea maxlength="5000" asp-for="Message" data-msg-required="Please enter your message." rows="8" class="form-control text-3 h-auto py-2" name="message" required></textarea>
+						<textarea maxlength="5000" asp-for="Message" data-msg-required="Please enter your message." rows="4" class="form-control text-3 h-auto py-2" name="message" required></textarea>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col">
-						<input type="submit" value="Gönder" class="btn btn-primary btn-modern" data-loading-text="Loading...">
-                        <button type="submit">Send Message</button>
+						@* <input type="submit" value="Gönder"  data-loading-text="Loading..."> *@
+                        <button class="btn btn-primary btn-modern" type="submit">Gönder</button>
 					</div>
 				</div>
 			</form>
@@ -69,26 +69,22 @@
 		</div>
 		<div class="col-lg-6">
 			<div>
-				<h4 class="mt-2 mb-1">Our <strong>Office</strong></h4>
+				<h4 class="mt-2 mb-1"> <strong>Ofisimiz</strong></h4>
 				<ul class="list list-icons list-icons-style-2 mt-2">
-					<li><i class="fas fa-map-marker-alt top-6"></i> <strong class="text-dark">Address:</strong> 1234 Street Name, City Name, United States</li>
-					<li><i class="fas fa-phone top-6"></i> <strong class="text-dark">Phone:</strong> (123) 456-789</li>
-					<li><i class="fas fa-envelope top-6"></i> <strong class="text-dark">Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></li>
+					<li><i class="fas fa-map-marker-alt top-6"></i> <strong class="text-dark">Adres:</strong> Kayabaşı Mahallesi Fetihtepe Caddesi C64 Blok Daire 6 Başakşehir / İstanbul</li>
+					<li><i class="fas fa-phone top-6"></i> <strong class="text-dark">Telefon:</strong> <a href="tel:+905393480388">+90 539 348 0388</a>  </li>
+					<li><i class="fas fa-envelope top-6"></i> <strong class="text-dark">Email:</strong> <a href="mailto:berkantkaracatr@gmail.com">berkantkaracatr@gmail.com</a></li>
 				</ul>
 			</div>
 
 			<div>
-				<h4 class="pt-5">Business <strong>Hours</strong></h4>
+				<h4 class="pt-5">Çalışma <strong>Saatleri</strong></h4>
 				<ul class="list list-icons list-dark mt-2">
-					<li><i class="far fa-clock top-6"></i> Monday - Friday - 9am to 5pm</li>
-					<li><i class="far fa-clock top-6"></i> Saturday - 9am to 2pm</li>
-					<li><i class="far fa-clock top-6"></i> Sunday - Closed</li>
+					<li><i class="far fa-clock top-6"></i> Haftaiçi: 9:00 - 18:00</li>
+					<li><i class="far fa-clock top-6"></i> Cumartesi: 9:00 - 15:00</li>
+					<li><i class="far fa-clock top-6"></i> Pazar: Kapalı</li>
 				</ul>
 			</div>
-
-			<h4 class="pt-5">Get in <strong>Touch</strong></h4>
-			<p class="lead mb-0 text-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit congue iaculis vitae at risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
 		</div>
 	</div>
 </div>

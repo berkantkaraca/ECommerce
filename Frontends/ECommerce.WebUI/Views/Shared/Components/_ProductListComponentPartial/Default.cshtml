@@ -1,23 +1,21 @@
 ﻿@model List<ResultProductWithCategoryDto>
 
 <div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
-    
+
     @foreach (var item in Model)
     {
         <div class="col-sm-6 col-lg-4">
             <div class="product mb-0">
                 <div class="product-thumb-info border-0 mb-3">
-                    <div class="product-thumb-info-badges-wrapper">
-                        <span class="badge badge-ecommerce badge-success">NEW</span>
-                    </div>
+
                     <div class="addtocart-btn-wrapper">
-                        <a href="shop-cart.html" class="text-decoration-none addtocart-btn" title="Sepete Ekle">
+                        <a href="/ShoppingCart/AddBasketItem/@item.ProductId" class="text-decoration-none addtocart-btn" title="Sepete Ekle">
                             <i class="icons icon-bag"></i>
                         </a>
                     </div>
 
-                    <a href="ajax/shop-product-quick-view.html" class="quick-view text-uppercase font-weight-semibold text-2">Ürünü İncele</a>
-                    <a href="shop-product-sidebar-left.html">
+                    @* <a href="/Product/ProductDetail/@item.ProductId" class="quick-view text-uppercase font-weight-semibold text-2">Ürünü İncele</a> *@
+                    <a href="/Product/ProductDetail/@item.ProductId">
                         <div class="product-thumb-info-image">
                             <img alt="@item.ProductName" class="img-fluid" src="@item.ProductImageUrl">
                         </div>
@@ -27,18 +25,16 @@
                     <div>
                         <a href="#" class="d-block text-uppercase text-decoration-none text-color-default text-color-hover-primary line-height-1 text-0 mb-1">@item.Category.CategoryName</a>
                         <h3 class="text-3-5 font-weight-medium font-alternative text-transform-none line-height-3 mb-0">
-                            <a href="shop-product-sidebar-right.html" class="text-color-dark text-color-hover-primary"> @item.ProductName</a>
+                            <a href="/Product/ProductDetail/@item.ProductId" class="text-color-dark text-color-hover-primary"> @item.ProductName</a>
                         </h3>
                     </div>
-                    <a href="#"
+
+                    @*    <a href="#"
                        class="text-decoration-none text-color-default text-color-hover-dark text-4">
                         <i class="far fa-heart"></i>
-                    </a>
+                    </a> *@
                 </div>
-                <div title="Rated 5 out of 5">
-                    <input type="text" class="d-none" value="5" title="" data-plugin-star-rating data-plugin-options="{'displayOnly': true, 'color': 'default', 'size':'xs'}">
-                </div>
-                <p class="price text-5 mb-3">
+                <p class="price text-4 mb-3">
                     <span class="sale text-color-dark font-weight-semi-bold">@item.ProductPrice.ToString("C")</span>
                     @* <span class="amount">$59,00</span> *@
                 </p>
