@@ -50,7 +50,7 @@ namespace ECommerce.WebUI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createCommentDto);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:7070/api/Comments", content);
+            var response = await client.PostAsync("http://localhost:7070/api/Comments", content);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Default");

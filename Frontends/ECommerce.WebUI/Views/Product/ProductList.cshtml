@@ -5,61 +5,6 @@
 <div role="main" class="main shop pt-4">
     <div class="container">
         <div class="row">
-            @* <div class="col-lg-3 order-2 order-lg-1">
-                <aside class="sidebar">
-                    <div class="filters-sidebar-wrapper bg-light rounded">
-
-                        @await Component.InvokeAsync("_ProductListPriceFilterComponentPartial")
-
-                        <hr class="solid opacity-7">
-
-                        @await Component.InvokeAsync("_ProductListColorFilterComponentPartial")
-
-                        <hr class="solid opacity-7">
-
-                        <div class="card card-modern">
-                            <div class="card-header">
-                                <div class="card-actions">
-                                    <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-                                </div>
-                                <h4 class="card-title">Beden</h4>
-                            </div>
-                            <div class="card-body">
-                                <form id="size-filter-form">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="small" id="size-small">
-                                            <label class="form-check-label" for="size-small">
-                                                Küçük
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="medium" id="size-medium">
-                                            <label class="form-check-label" for="size-medium">
-                                                Orta
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="large" id="size-large">
-                                            <label class="form-check-label" for="size-large">
-                                                Büyük
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="xlarge" id="size-xlarge">
-                                            <label class="form-check-label" for="size-xlarge">
-                                                Çok Büyük
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Filtrele</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-            </div> *@
-
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="masonry-loader masonry-loader-showing">
                     @await Component.InvokeAsync("_ProductListComponentPartial", new { id = ViewBag.CategoryId })

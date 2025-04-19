@@ -1,0 +1,197 @@
+# Register ve Login İşlemleri Açıklaması
+
+## 1. Register İşlemi
+
+### 1.1 Kullanıcıdan Giriş Verilerinin Alınması
+`RegisterController` sınıfında `Index` metodu, kullanıcıdan kayıt bilgilerini almak için bir form görüntüler. Bu form, `CreateRegisterDto` modelini kullanır.
+
+```cs
+// filepath: c:\Berkant Karaca\Yazılım\Bitirme Projesi\ECommerce\Frontends\ECommerce.WebUI\Controllers\RegisterController.cs
+[HttpGet]
+public IActionResult Index()
+{
+    return View();
+}
+```
+
+### 1.2 Kullanıcı Verilerinin API'ye Gönderilmesi
+Kullanıcıdan alınan bilgiler, `CreateRegisterDto` modeli ile API'ye gönderilir. Şifre ve şifre tekrarı eşleşiyorsa, bilgiler JSON formatında serialize edilerek `RegistersController` API'sine gönderilir.
+
+```cs
+[HttpPost]
+public async Task<IActionResult> Index(CreateRegisterDto createRegisterDto)
+{
+    if (createRegisterDto.Password == createRegisterDto.ConfirmPassword)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var jsonData = JsonConvert.SerializeObject(createRegisterDto);
+        StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        var responseMessage = await client.PostAsync("http://localhost:5001/api/Registers", stringContent);
+        if (responseMessage.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Index", "Login");
+        }
+    }
+    return View();
+}
+```
+
+### 1.3 API'de Kullanıcı Kaydı
+`RegistersController` sınıfı, gelen kullanıcı bilgilerini alır ve `UserManager` kullanarak yeni bir kullanıcı oluşturur.
+
+```cs
+// filepath: c:\Berkant Karaca\Yazılım\Bitirme Projesi\ECommerce\IdentityServer\ECommerce.IdentityServer\Controllers\RegistersController.cs
+[HttpPost]
+public async Task<IActionResult> UserRegister(UserRegisterDto userRegisterDto)
+{
+    var values = new ApplicationUser()
+    {
+        Name = userRegisterDto.Name,
+        Surname = userRegisterDto.Surname,
+        UserName = userRegisterDto.Username,
+        Email = userRegisterDto.Email
+    };
+
+    var result = await _userManager.CreateAsync(values, userRegisterDto.Password);
+
+    if (result.Succeeded)
+    {
+        return Ok("Kullanıcı eklendi.");
+    }
+    else
+    {
+        return Ok("Kullanıcı eklenirken bir hata oluştu.");
+    }
+}
+```
+
+---
+
+## 2. Login İşlemi
+
+### 2.1 Kullanıcıdan Giriş Verilerinin Alınması
+`LoginController` sınıfında `Index` metodu, kullanıcıdan giriş bilgilerini almak için bir form görüntüler. Bu form, `SignInDto` modelini kullanır.
+
+```cs
+// filepath: c:\Berkant Karaca\Yazılım\Bitirme Projesi\ECommerce\Frontends\ECommerce.WebUI\Controllers\LoginController.cs
+[HttpGet]
+public IActionResult Index()
+{
+    return View();
+}
+```
+
+### 2.2 Kullanıcı Girişinin Doğrulanması
+Kullanıcıdan alınan bilgiler, `IdentityService` sınıfındaki `SignIn` metodu ile doğrulanır. Bu metod, IdentityServer'dan bir token alır ve kullanıcıyı doğrular.
+
+```cs
+[HttpPost]
+public async Task<IActionResult> Index(SignInDto signInDto)
+{
+    await _identityService.SignIn(signInDto);
+    return RedirectToAction("Index", "User");
+}
+```
+
+### 2.3 IdentityServer Üzerinden Doğrulama
+`IdentityService` sınıfı, IdentityServer'dan bir `PasswordTokenRequest` ile token alır ve kullanıcı bilgilerini doğrular.
+
+```cs
+// filepath: c:\Berkant Karaca\Yazılım\Bitirme Projesi\ECommerce\Frontends\ECommerce.WebUI\Services\Concrete\IdentityService.cs
+public async Task<bool> SignIn(SignInDto signInDto)
+{
+    var discoveryEndPoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+    {
+        Address = _serviceApiSettings.IdentityServerUrl,
+        Policy = new DiscoveryPolicy
+        {
+            RequireHttps = false
+        }
+    });
+
+    var passwordTokenRequest = new PasswordTokenRequest
+    {
+        ClientId = _clientSettings.ECommerceManagerClient.ClientId,
+        ClientSecret = _clientSettings.ECommerceManagerClient.ClientSecret,
+        UserName = signInDto.Username,
+        Password = signInDto.Password,
+        Address = discoveryEndPoint.TokenEndpoint
+    };
+
+    var token = await _httpClient.RequestPasswordTokenAsync(passwordTokenRequest);
+
+    var userInfoRequest = new UserInfoRequest
+    {
+        Token = token.AccessToken,
+        Address = discoveryEndPoint.UserInfoEndpoint
+    };
+
+    var userValues = await _httpClient.GetUserInfoAsync(userInfoRequest);
+
+    ClaimsIdentity claimsIdentity = new ClaimsIdentity(userValues.Claims, CookieAuthenticationDefaults.AuthenticationScheme, "name", "role");
+
+    ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+    var authenticationProperties = new AuthenticationProperties();
+
+    authenticationProperties.StoreTokens(new List<AuthenticationToken>()
+    {
+        new AuthenticationToken
+        {
+            Name = OpenIdConnectParameterNames.AccessToken,
+            Value = token.AccessToken
+        },
+        new AuthenticationToken
+        {
+            Name = OpenIdConnectParameterNames.RefreshToken,
+            Value = token.RefreshToken
+        },
+        new AuthenticationToken
+        {
+            Name = OpenIdConnectParameterNames.ExpiresIn,
+            Value = DateTime.Now.AddSeconds(token.ExpiresIn).ToString()
+        }
+    });
+
+    authenticationProperties.IsPersistent = false;
+
+    await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, authenticationProperties);
+
+    return true;
+}
+```
+
+### 2.4 API'de Kullanıcı Girişi
+`LoginsController` sınıfı, gelen kullanıcı bilgilerini alır ve `SignInManager` kullanarak kullanıcı girişini doğrular.
+
+```cs
+// filepath: c:\Berkant Karaca\Yazılım\Bitirme Projesi\ECommerce\IdentityServer\ECommerce.IdentityServer\Controllers\LoginsController.cs
+[HttpPost]
+public async Task<IActionResult> UserLogin(UserLoginDto userLoginDto)
+{
+    var result = await _signInManager.PasswordSignInAsync(userLoginDto.Username, userLoginDto.Password, false, false);
+    var user = await _userManager.FindByNameAsync(userLoginDto.Username);
+
+    if (result.Succeeded)
+    {
+        GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
+        model.Username = userLoginDto.Username;
+        model.Id = user.Id;
+        var token = JwtTokenGenerator.GenerateToken(model);
+        return Ok(token);
+    }
+    else
+    {
+        return Ok("Kullanıcı Adı veya Şifre Hatalı");
+    }
+}
+```
+
+---
+
+## 3. Özet
+1. Kullanıcı, `RegisterController` üzerinden kayıt formunu doldurur ve API'ye gönderir.
+2. API, `RegistersController` ile kullanıcıyı kaydeder.
+3. Kullanıcı, `LoginController` üzerinden giriş yapar.
+4. `IdentityService`, IdentityServer'dan token alır ve kullanıcıyı doğrular.
+5. API, `LoginsController` ile kullanıcı girişini kontrol eder ve token döner.

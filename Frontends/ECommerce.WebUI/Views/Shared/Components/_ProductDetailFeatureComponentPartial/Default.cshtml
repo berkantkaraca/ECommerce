@@ -30,16 +30,10 @@
 	<br />
 	<br />
 
-	<form enctype="multipart/form-data" method="post" class="cart" action="shop-cart.html">
-
-		<hr>
-		<div class="quantity quantity-lg">
-			<input type="button" class="minus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="-">
-			<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-			<input type="button" class="plus text-color-hover-light bg-color-hover-primary border-color-hover-primary" value="+">
-		</div>
-		<button type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">Sepete Ekle</button>
-
-	</form>
+	
+	<button type="button" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary"
+			onclick="window.location.href='/ShoppingCart/AddBasketItem/@Model.ProductId'">
+		Sepete Ekle
+	</button>
 
 </div>

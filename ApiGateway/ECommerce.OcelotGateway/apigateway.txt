@@ -1,0 +1,88 @@
+ECommerce.OcelotGateway Projesi Raporu
+======================================
+
+1. Projenin Amacı:
+   ECommerce.OcelotGateway, bir API Gateway olarak çalışır ve mikroservis mimarisi kullanan bir e-ticaret platformunda merkezi bir giriş noktası sağlar. 
+   Bu gateway, istemcilerin (örneğin, web veya mobil uygulamalar) mikroservislere doğrudan erişmesini engeller ve tüm istekleri yönlendirir.
+
+2. Kullanılan Teknolojiler:
+   - **Ocelot**: .NET Core tabanlı bir API Gateway kütüphanesi. Mikroservisler arasında yönlendirme, yük dengeleme, kimlik doğrulama ve yetkilendirme gibi işlemleri kolaylaştırır.
+   - **IdentityServer**: Kimlik doğrulama ve yetkilendirme işlemleri için kullanılır.
+
+3. Yapılandırma Dosyaları:
+   - **appsettings.json**: Proje genelinde kullanılan ayarları içerir. Örneğin, IdentityServer URL'si ve loglama seviyeleri burada tanımlanmıştır.
+   - **ocelot.json**: Mikroservislerin yönlendirme kurallarını ve kimlik doğrulama ayarlarını içerir.
+
+   Örnek `appsettings.json`:
+   ```json
+   {
+     "IdentityServerUrl": "http://localhost:5001",
+     "Logging": {
+       "LogLevel": {
+         "Default": "Information",
+         "Microsoft.AspNetCore": "Warning"
+       }
+     },
+     "AllowedHosts": "*"
+   }
+   ```
+
+   Örnek `ocelot.json`:
+   ```json
+   {
+     "Routes": [
+       {
+         "DownstreamPathTemplate": "/api/{everything}",
+         "DownstreamScheme": "http",
+         "DownstreamHostAndPorts": [
+           {
+             "Host": "localhost",
+             "Port": 7070
+           }
+         ],
+         "UpstreamPathTemplate": "/services/catalog/{everything}",
+         "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+         "AuthenticationOptions": {
+           "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+           "AllowedScopes": [ "CatalogFullPermission" ]
+         }
+       }
+     ],
+     "GlobalConfiguration": {
+       "BaseUrl": "http://localhost:5000"
+     }
+   }
+   ```
+
+4. Mikroservisler ve Yönlendirme:
+   - Her mikroservis için bir "Route" tanımlanmıştır. Bu tanımlar, istemciden gelen isteklerin hangi mikroservise yönlendirileceğini belirler.
+   - Örneğin:
+     - `/services/catalog/{everything}` -> Catalog mikroservisine yönlendirilir.
+     - `/services/order/{everything}` -> Order mikroservisine yönlendirilir.
+   - Her mikroservis için kimlik doğrulama ve yetkilendirme ayarları yapılmıştır. Örneğin, "CatalogFullPermission" yetkisi gereklidir.
+
+5. GlobalConfiguration:
+   - `BaseUrl`: API Gateway'in temel URL'sini tanımlar. Örneğin, `http://localhost:5000`.
+
+6. Kimlik Doğrulama ve Yetkilendirme:
+   - Ocelot, IdentityServer ile entegre edilmiştir. Her mikroservis için gerekli yetkilendirme kuralları tanımlanmıştır.
+   - Örneğin, bir kullanıcı "BasketFullPermission" yetkisine sahipse, Basket mikroservisine erişebilir.
+
+7. Mikroservislerin Portları:
+   - Her mikroservis farklı bir portta çalışır. Örneğin:
+     - Catalog: 7070
+     - Discount: 7071
+     - Order: 7072
+     - Cargo: 7073
+     - Basket: 7074
+     - Comment: 7075
+     - Payment: 7076
+     - Images: 7077
+
+8. Projenin Avantajları:
+   - Merkezi bir giriş noktası sağlar.
+   - Mikroservislerin güvenliğini artırır.
+   - Yük dengeleme ve hata yönetimi gibi özellikler sunar.
+   - Mikroservislerin bağımsız olarak geliştirilmesini ve dağıtılmasını kolaylaştırır.
+
+Bu proje, mikroservis mimarisi kullanan bir e-ticaret platformunun performansını ve güvenliğini artırmak için kritik bir rol oynar.
