@@ -1,4 +1,5 @@
-﻿using ECommerce.DtoLayer.CommentDtos;
+﻿using Amazon.Runtime;
+using ECommerce.DtoLayer.CommentDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -23,6 +24,11 @@ namespace ECommerce.WebUI.Controllers
         {
             ViewBag.CategoryId = id;
             return View();
+        }
+
+        public IActionResult ProductListAll()
+        {
+            return ViewComponent("ProductListAllComponent");
         }
 
         public IActionResult ProductDetail(string id)
